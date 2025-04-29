@@ -74,5 +74,31 @@ AceIt is crafted with simplicity and effectiveness in mind. It leverages the pow
 - (Future Consideration) Integrations:
   - Potentially link with learning management systems (Canvas, Moodle, etc.)
 
+## Daily Logs (Latest to Oldest)
 
+### 29th Apr, Tue: Scope Breakdown & UX Wireframes
+
+#### Goal for Today
+
+- Break down the high-level scope into detailed functionalities and features for each page of the app that we're showcasing.
+- Keep the scope to within 3~5 pages. There can be smaller pop-ups like KendoReact Windows/Dialogs within those pages, and it's fine. Within the context of this project, we're referring to actual web pages/navigation.
+- Generate a series of hand-drawn wireframes for the different pages and key sections.
+
+#### What was Done
+- Generated the Next.js boilerplate project.
+- Updated the README file.
+- 
+
+#### What I've Learned/Discovered
+-
+
+#### Potential Challenges/Solutions
+-
+
+### 28th Apr, Mon: Opening Project Discussion
+
+- Worked with Gemini to brainstorm and decide on the next showcase project.
+- Decided to name it "AceIt".
+- This will be a school assignment tracking app.
+- Defined the scope (high-level), and core features.
 
