@@ -77,7 +77,7 @@ AceIt is crafted with simplicity and effectiveness in mind. It leverages the pow
 ## Work Breakdown
 _(Potential Pages + Logical Work Units)_
 
-### Student Dashboard Page (also Home):
+### Student Dashboard Page (also Home/Stats):
 
 #### Not Logged On
 
@@ -85,7 +85,7 @@ _(Potential Pages + Logical Work Units)_
 - Window/Dialog for Setting New Password (school assigned account)
 - Background show greyed loading panel items.
 
-#### Logged On
+#### Logged On (Home View)
 
 <details>
   <summary>Desktop/Tablet/Mobile (Landscape mode):</summary>
@@ -122,6 +122,24 @@ _(Potential Pages + Logical Work Units)_
     - Header will have a "+" button for adding quick reminders.
     - Urgent + Overdue Reminders
     - Tapping on reminder item will open reminders details Window (with functionality to edit/save)
+</details>
+
+#### Logged On (Stats View)
+
+<details>
+  <summary>Desktop/Tablet/Mobile (Landscape mode):</summary>
+
+  - Top Panel:
+  - Middle Panel:
+  - Bottom Panel:
+</details>
+
+<details>
+  <summary>Mobile (Portrait mode):</summary>
+
+  - Top Panel：
+  - Middle Panel:
+  - Bottom Panel:
 </details>
 
 ### Assignment Listing/Details Page (by Module):
