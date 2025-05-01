@@ -129,17 +129,42 @@ _(Potential Pages + Logical Work Units)_
 <details>
   <summary>Desktop/Tablet/Mobile (Landscape mode):</summary>
 
-  - Top Panel:
-  - Middle Panel:
-  - Bottom Panel:
+  - Left-Top Panel:
+    - Key Stats Summary section
+    - Consists of **THREE** widgets:
+      - Average Grade: a student might have an average rating of "B+".
+      - Average Submission Rating: a percentage of on-time versus late submissions.
+      - Average Appraisal Rating: the average appraisal rating of the student from their peers and lecturers.
+    - Tapping on each widget will also open up a summarized history of that particular stat.
+    - All summary data/information will be presented in the right panel.
+    - Each widget's title will also have an "i" icon which provides a tooltip to explain what that stat represents to the student.
+  - Left-Bottom Panel:
+    - A spider/radar chart will be used here to show the student's overall rating/stats across key soft skills when it comes to project work/management.
+    - **FIVE** skills will be presented here:
+      - Collaboration
+      - Problem-solving
+      - Critical Thinking
+      - Time Management
+      - Presentation Skills
+    - When a student clicks on one of those skill/points on the chart, it will display summarized information/data in the right panel.
+  - Right Panel:
+    - Average Grade: use a historical chart of the user's score over time.
+    - Average Submission Rating: submission donut chart. Like percentage on-time vs late submissions.
+    - Average Appraisal Rating: use a historical chart to show the ratings over time.
+    - Spider Chart Breakdown:
+      - Use a gauge to show student's average performance over time in that category. Use percentage.
+      - Use a line chart to show student's performance in this category over time.
+      - Right below it, we can also display the relevant feedback the student has received (most recent to oldest)
 </details>
 
 <details>
   <summary>Mobile (Portrait mode):</summary>
 
   - Top Panel：
-  - Middle Panel:
+    - Consists of the same THREE widgets, but will be displayed in a vertical top-down layout.
+    - There will be a collapsible button allowing the student to view the summary info directly below (but still within the top panel).
   - Bottom Panel:
+    - Similar to the top panel, the bottom panel can be expanded and collapsed to display additional information.
 </details>
 
 ### Assignment Listing/Details Page (by Module):
