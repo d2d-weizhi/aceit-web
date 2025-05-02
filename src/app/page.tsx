@@ -1,37 +1,27 @@
 "use client";
 
-import { useState } from "react";
 import SideDrawer from "@/components/sidedrawer";
 
 export default function Dashboard() {
-  const [isShowRightPanel, setIsShowRightPanel] = useState(false);
-
   return (
-    <div className="flex flex-row bg-gray-300 w-screen justify-center items-center">
-      <div 
-        className="flex-col bg-white p-4 h-screen overflow-y-auto w-[50%] transition-all duration-250 ease-out"
-        style={{
-          transform: isShowRightPanel ? 'translateX(0)' : 'translateX(50%)',
-          transitionDelay: isShowRightPanel ? '0ms' : '250ms' // Delay for hiding
-        }}
-      > 
-        {/* Side Drawer inside the left panel */}
-        <SideDrawer /> 
-
-        <button type="button" onClick={() => setIsShowRightPanel(!isShowRightPanel)}>
-          Show Right Panel
-        </button>
-        
+    <div className="grid grid-rows-4 h-screen w-screen">
+      <div className="flex justify-end items-center p-4">
+        {/* Put our student profile picture here. */}
       </div>
-      <div 
-        className="flex-col bg-white p-4 relative h-screen overflow-y-auto w-[50%] opacity-0 transition-all duration-250 ease-out"
-        style={{
-          transitionDelay: isShowRightPanel ? '250ms' : '0ms', // Delay for showing
-          opacity: isShowRightPanel ? 1 : 0
-        }}
-      >
-        {/* ... your other Dashboard content ... */}
-        <h2>Right Panel here</h2>
+
+      <div class="flex justify-center items-center gap-4 p-4">
+        <div class="flex flex-col items-center justify-center w-1/3 aspect-square rounded-lg bg-gray-100 p-4">
+          <span class="text-xs font-medium text-gray-600">Avg. Grade</span>
+          <span class="text-2xl font-bold">B+</span>
+        </div>
+        <div class="flex flex-col items-center justify-center w-1/3 aspect-square rounded-lg bg-gray-100 p-4">
+          <span class="text-xs font-medium text-gray-600">Submission Rating</span>
+          <span class="text-2xl font-bold">78.8%</span>
+        </div>
+        <div class="flex flex-col items-center justify-center w-1/3 aspect-square rounded-lg bg-gray-100 p-4">
+          <span class="text-xs font-medium text-gray-600">Appraisal Rating</span>
+          <span class="text-2xl font-bold">4.1</span>
+        </div>
       </div>
     </div>
   );
