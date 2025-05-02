@@ -313,6 +313,11 @@ _(Potential Pages + Logical Work Units)_
 
 ## Daily Logs (Latest to Oldest)
 
+### 1st May, Thu: Completed the UX Wireframes
+
+- Created the sketched wireframes for our app.
+- Realized that there might be a challenge when it comes to page navigation when viewing the app in mobile (portrait) mode. Will need to consider this solution later.
+
 ### 29th Apr, Tue: Scope Breakdown & UX Wireframes
 
 #### Goal for Today
