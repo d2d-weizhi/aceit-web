@@ -13,7 +13,7 @@ export default function Dashboard() {
         <div className="flex flex-col items-center justify-center w-1/3 aspect-square rounded-lg bg-gray-100 p-8">
           <span className="text-xs font-medium text-gray-600">Avg. Grade</span>
           <span 
-            styles={{
+            style={{
               fontSize: "2.5rem",
               fontWeight: "300"
             }}
@@ -22,7 +22,7 @@ export default function Dashboard() {
         <div className="flex flex-col items-center justify-center w-1/3 aspect-square rounded-lg bg-gray-100 p-8">
           <span className="text-xs font-medium text-gray-600">Submission Rating</span>
           <span
-            styles={{
+            style={{
               fontSize: "2.5rem",
               fontWeight: "300"
             }}  
@@ -31,7 +31,7 @@ export default function Dashboard() {
         <div className="flex flex-col items-center justify-center w-1/3 aspect-square rounded-lg bg-gray-100 p-8">
           <span className="text-xs font-medium text-gray-600">Appraisal Rating</span>
           <span
-            styles={{
+            style={{
               fontSize: "2.5rem",
               fontWeight: "300"
             }}  
