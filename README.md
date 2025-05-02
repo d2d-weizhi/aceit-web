@@ -313,6 +313,27 @@ _(Potential Pages + Logical Work Units)_
 
 ## Daily Logs (Latest to Oldest)
 
+### 3rd May, Sat: Continue with UI Prototyping
+
+- _**TODO: Figure out how to make the SideDrawer slide in from underneath the menu button instead of over it.**_
+- _**TODO: Finish adding in the on-going assignments and reminders to the Dashboard Page.**_
+- _**TODO: Need to add another row so we can display the tabs to toggle between "Home" and "Stats".**_
+
+### 2nd May, Fri: Started UI Prototyping
+
+- Start by implementing the 2-column layout for both Assignments & Tasks pages.
+- Added CSS animations for the transitions when user interacts with the left panels.
+- Left Panel will slide to the left. And Right Panel will transition from an opacity value of 0 to 1.
+- When closing the Right Panel, the Left Panel will wait until Right Panel is fully hidden from view before sliding back to the middle.
+- Used a single grid layout for Dashboard Page.
+- The SideDrawer's Close button has been added to the overlay.
+- Increased the font size of the menu items.
+- Added some more padding.
+- Enlarged the width of the menu for more spacing.
+- For the Stats Widgets, I have managed to align the contents the way I want it.
+- Stats figures will be in `<div></div>` instead of `<span></span>` to make it easier to align them.
+- The Stats titles are shifted to the top of the widget.
+
 ### 1st May, Thu: Completed the UX Wireframes
 
 - Created the sketched wireframes for our app.
