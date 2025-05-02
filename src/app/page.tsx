@@ -1,6 +1,6 @@
 "use client";
 
-import SideDrawer from "@/components/sidedrawer";
+// import SideDrawer from "@/components/sidedrawer";
 
 export default function Dashboard() {
   return (
