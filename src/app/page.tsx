@@ -14,7 +14,7 @@ export default function Dashboard() {
           <span className="text-xs font-medium text-gray-600">Avg. Grade</span>
           <span 
             style={{
-              fontSize: "2.5rem",
+              fontSize: "3.5rem",
               fontWeight: "300"
             }}
           >B+</span>
@@ -23,7 +23,7 @@ export default function Dashboard() {
           <span className="text-xs font-medium text-gray-600">Submission Rating</span>
           <span
             style={{
-              fontSize: "2.5rem",
+              fontSize: "3.5rem",
               fontWeight: "300"
             }}  
           >78.8%</span>
@@ -32,7 +32,7 @@ export default function Dashboard() {
           <span className="text-xs font-medium text-gray-600">Appraisal Rating</span>
           <span
             style={{
-              fontSize: "2.5rem",
+              fontSize: "3.5rem",
               fontWeight: "300"
             }}  
           >4.1</span>
