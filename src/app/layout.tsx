@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "@progress/kendo-theme-material/dist/material-main.css";
 import "./globals.css";
 
 export const metadata: Metadata = {

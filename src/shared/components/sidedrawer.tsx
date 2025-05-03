@@ -13,9 +13,9 @@ export default function SideDrawer() {
       <button
 	      type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-[56px] h-[56px] items-center justify-center bg-transparent p-4"
+        className="w-[64px] h-[64px] items-center justify-center bg-transparent p-2"
       >
-	      <Menu strokeWidth={1.5} />
+	      <Menu strokeWidth={1.5} width="48px" height="48px" />
       </button>
 
 			{/* Side Drawer Content (similar to the previous example) */}
@@ -27,9 +27,9 @@ export default function SideDrawer() {
 	      <button
 		      type="button"
 		      onClick={() => setIsOpen(!isOpen)}
-		      className="w-[56px] h-[56px] items-center justify-center bg-transparent m-4 p-4"
+		      className="w-[64px] h-[64px] items-center justify-center bg-transparent p-2 m-4"
 	      >
-		      <X strokeWidth={1.5} color={"white"} />
+		      <X strokeWidth={1.5} color={"white"} width="48px" height="48px" />
 	      </button>
 				{/* Our navigation links here. */}
 				<nav className="mt-16 w-full"> {/* Add margin-top */}

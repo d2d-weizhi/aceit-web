@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import SideDrawer from "@/components/sidedrawer";
+import SideDrawer from "@/shared/components/sidedrawer";
 
 export default function Assignments() {
 	const [isShowRightPanel, setIsShowRightPanel] = useState(false);

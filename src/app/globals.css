@@ -23,6 +23,96 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+h2 {
+  font-size: 4.5rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.aceit-tab {
+  @apply px-6 py-4 min-w-[90px] h-full;
+  font-size: 1.25rem;
+  font-family: "Roboto", sans-serif;
+  border-bottom: 4px solid transparent;
+  cursor: pointer;
+}
+
+.aceit-tab-content {
+  @apply flex-1;
+}
+
+.active-tab {
+  @apply border-b-4 border-solid;
+  background-color: #fff;
+  font-weight: 500;
+  border-color: #3f51b5; /* Show the border for active tab */
+}
+
+.section-header {
+  font-size: 1rem; /* Adjust font size as needed */
+  line-height: 1.4rem;
+  font-weight: 500; /* Slightly bolder than regular text */
+  text-transform: uppercase; /* Full caps */
+  text-align: left;
+  width: 100%;
+  letter-spacing: 0.05em; /* Add a touch of letter spacing */
+  color: #333; /* Adjust color as needed */
+  margin-bottom: 1rem; /* Add some bottom margin */
+  margin-left: 8px;
+  margin-right: 8px;
+  padding-bottom: 0.25rem; /* Add padding for the line */
+  border-bottom: 1px solid rgba(21, 21, 21, .5); /* Thin light gray line */
+}
+
+.stats-figure {
+  font-size: 5.5rem;
+  font-weight: 250;
+}
+
+@media (max-width: 2240px) {
+  .stats-figure {
+    font-size: 4.5rem;
+    font-weight: 250;
+  }
+}
+
+@media (max-width: 1920px) {
+  .stats-figure {
+    font-size: 3.5rem;
+    font-weight: 250;
+  }
+}
+
+@media (max-width: 1600px) {
+  .stats-figure {
+    font-size: 3rem;
+    font-weight: 250;
+  }
+}
+
+@media (max-width: 1280px) {
+  .stats-figure {
+    font-size: 2.5rem;
+    font-weight: 250;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-figure {
+    font-size: 2.2rem;
+    font-weight: 250;
+  }
+}
+
 .stats-widget {
   aspect-ratio: 3 / 2.5;
+}
+
+.tab-item {
+  font-family: "Roboto";
+  font-size: 1.25rem;
+}
+
+.k-animation-container {
+  width: 100%;
 }

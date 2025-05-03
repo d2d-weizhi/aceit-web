@@ -318,6 +318,11 @@ _(Potential Pages + Logical Work Units)_
 - _**TODO: Figure out how to make the SideDrawer slide in from underneath the menu button instead of over it.**_
 - _**TODO: Finish adding in the on-going assignments and reminders to the Dashboard Page.**_
 - _**TODO: Need to add another row so we can display the tabs to toggle between "Home" and "Stats".**_
+- Remembered that the Dashboard page should also have two column layout.
+- Decided to create a simple Tab Bar component called `AceItTabBar` instead of using KendoReact's TabStrip component.
+- Added theRadar/Spider chart to the Stats View section.
+- Reminder: Important to know when to use Margins versus Paddings.
+- Added some placeholder UI files (one-time use components).
 
 ### 2nd May, Fri: Started UI Prototyping
 
