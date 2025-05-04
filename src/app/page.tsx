@@ -159,6 +159,7 @@ export default function Dashboard() {
     setIsShowRightPanel(!isShowRightPanel);
   }
 
+  // @typescript-eslint/no-explicit-any
   const handleChartRefresh = (chartOptions: any, themeOptions: any, chartInstance: any) => {
     if (refreshChart) {
         chartInstance.setOptions(chartOptions, themeOptions);
