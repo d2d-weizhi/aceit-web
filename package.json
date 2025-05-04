@@ -12,6 +12,7 @@
     "@progress/kendo-react-charts": "^10.2.0",
     "@progress/kendo-react-gantt": "^10.2.0",
     "@progress/kendo-react-layout": "^10.2.0",
+    "@progress/kendo-react-listview": "^10.2.0",
     "@progress/kendo-theme-material": "^10.6.0",
     "lucide-react": "^0.503.0",
     "next": "15.3.1",

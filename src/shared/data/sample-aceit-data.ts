@@ -22,7 +22,7 @@ export const ganttTasksData = [
     title: 'UX Design',
     start: new Date('2025-04-28T00:00:00.000Z'),
     end: new Date('2025-05-25T00:00:00.000Z'),
-    completionRatio: 0.716253,
+    percentComplete: 0.716253,
     isExpanded: true,
     subtasks: [
       {
@@ -30,35 +30,35 @@ export const ganttTasksData = [
         title: 'User Flow',
         start: new Date('2025-04-28T00:00:00.000Z'),
         end: new Date('2025-04-30T00:00:00.000Z'),
-        completionRatio: 1.00
+        percentComplete: 1.00
       },
       {
         id: 9,
         title: 'Information Architecture',
         start: new Date('2025-05-01T00:00:00.000Z'),
         end: new Date('2025-05-03T00:00:00.000Z'),
-        completionRatio: 0.756612
+        percentComplete: 0.756612
       },
       {
         id: 10,
         title: 'Sketched Wireframes',
         start: new Date('2025-05-03T00:00:00.000Z'),
         end: new Date('2025-05-08T00:00:00.000Z'),
-        completionRatio: 0.756612
+        percentComplete: 0.756612
       },
       {
         id: 11,
         title: 'Digital Wireframes',
         start: new Date('2025-05-09T00:00:00.000Z'),
         end: new Date('2025-05-12T00:00:00.000Z'),
-        completionRatio: 0.756612
+        percentComplete: 0.756612
       },
       {
         id: 12,
         title: 'Moodboards & Stylescapes',
         start: new Date('2025-05-06T00:00:00.000Z'),
         end: new Date('2025-05-12T00:00:00.000Z'),
-        completionRatio: 0.615263
+        percentComplete: 0.615263
       }
     ],
   }
@@ -88,6 +88,44 @@ export const ganttTasksDependencies = [
     fromId: 10,
     toId: 11,
     type: 1
+  }
+];
+
+export const homeTasksData = [
+  {
+    id: "8js61ns98ss6",
+    title: "Work on the 2nd Moodboard",
+    duedate: new Date('2025-05-04T00:00:00.000Z'),
+    percentCompleted: 0.85,
+    dueSoon: true
+  },
+  {
+    id: "16256ha6s57a",
+    title: "Work on the 3rd Moodboard",
+    duedate: new Date('2025-05-06T00:00:00.000Z'),
+    percentCompleted: 0.6,
+    dueSoon: false
+  },
+  {
+    id: "26172636556a",
+    title: "Refine the Sitemap for GoStart (w/ Lecturer Feedbacks)",
+    duedate: new Date('2025-05-08T00:00:00.000Z'),
+    percentCompleted: 0.25,
+    dueSoon: false
+  },
+  {
+    id: "b87a8s6576s",
+    title: "Start building the digital wireframes (web).",
+    duedate: new Date('2025-05-09T00:00:00.000Z'),
+    percentCompleted: 0,
+    dueSoon: false
+  },
+  {
+    id: "a78ns6765d8",
+    title: "Start building the digital wireframes (mobile).",
+    duedate: new Date('2025-05-11T00:00:00.000Z'),
+    percentCompleted: 0,
+    dueSoon: false
   }
 ];
 

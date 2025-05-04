@@ -18,6 +18,8 @@ import {
   GanttDependencyModelFields
 } from '@progress/kendo-react-gantt';
 
+import { ListView, ListViewItemProps, ListViewItemWrapper } from '@progress/kendo-react-listview';
+
 import {
   Chart,
   ChartTitle,
@@ -29,7 +31,7 @@ import {
   PlotAreaClickEvent
 } from '@progress/kendo-react-charts';
 
-import { assignmentsData, ganttTasksDependencies, ganttTasksData, pmProfileData } from '@/shared/data/sample-aceit-data';
+import { assignmentsData, ganttTasksDependencies, ganttTasksData, homeTasksData, pmProfileData } from '@/shared/data/sample-aceit-data';
 
 const ganttStyle = {
   height: 500,
@@ -57,8 +59,20 @@ const columns = [
   {
       field: taskModelFields.title,
       title: 'Title',
-      width: 180,
+      width: 200,
       expandable: true
+  },
+  {
+    field: taskModelFields.start,
+    title: 'Start',
+    width: 90,
+    format: '{0:dd/MM}'
+  },
+  {
+    field: taskModelFields.end,
+    title: 'End',
+    width: 90,
+    format: '{0:dd/MM}'
   }
 ];
 
@@ -72,6 +86,26 @@ export default function Dashboard() {
   const [isShowRightPanel, setIsShowRightPanel] = useState(false);
   const refreshChart = false;
 
+  const homeTaskItemRender = (props: ListViewItemProps) => {
+    let item = props.dataItem;
+
+    // Format the date as "dd MMM"
+    const formattedDueDate = new Date(item.duedate).toLocaleDateString('en-US', {
+      day: '2-digit', 
+      month: 'short' 
+    });
+
+    return (
+      <ListViewItemWrapper className="h-[60px]" style={{ borderBottom: '1px solid lightgrey' }}>
+        <div 
+          className={`flex h-full p-[5px] text-lg w-[100%] items-center ${item.dueSoon && "font-bold"}`}
+        >
+          {item.title} | {formattedDueDate}
+        </div>
+      </ListViewItemWrapper>
+    );
+  };
+
   function chartDrillDown(event: PlotAreaClickEvent) {
     setIsShowRightPanel(!isShowRightPanel);
   }
@@ -80,7 +114,7 @@ export default function Dashboard() {
     if (refreshChart) {
         chartInstance.setOptions(chartOptions, themeOptions);
     }
-};
+  };
 
   return (
     <div className="flex flex-row bg-gray-300 w-screen justify-center items-center">
@@ -161,6 +195,7 @@ export default function Dashboard() {
                   </div>
 
                   {/* Current/Upcoming Tasks Section starts here. */}
+                  <ListView data={homeTasksData} item={homeTaskItemRender} style={{ width: '100%', height: 300 }} />
                   {/* Current/Upcoming Tasks Section ends here. */}
 
                   <div className="h-8 w-full" />
