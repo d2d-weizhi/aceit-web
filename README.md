@@ -313,15 +313,18 @@ _(Potential Pages + Logical Work Units)_
 
 ## Daily Logs (Latest to Oldest)
 
-### 4th May, Sun: Home View UI Prototyping
+### TODOs:
 
-- **TODO:** When I have the time, I should do some digging to see if we can scroll the view to the current date.
-- **TODO:** I also want to figure out how to customize the dates in Week View mode to just `"dd/MM"`, and remove the short day of the week (e.g. "Mon", "Tue", etc). 
+- When I have the time, I should do some digging to see if we can scroll the view to the current date.
+- I also want to figure out how to customize the dates in Week View mode to just `"dd/MM"`, and remove the short day of the week (e.g. "Mon", "Tue", etc). 
+
+### 4th May, Sun: Home View UI Prototyping
 
 - Added the `ExpansionPanel`. It is no longer called Accordion.
 - By default, I will display top 3 on-going assignments with upcoming deadlines.
 - I've also added a sample Gantt Chart view into the content areas.
 - Added some sample data into `sample-aceit-data.ts`.
+- Finished UI prototyping for Home View section of Dashboard (`page.tsx`)
 
 ### 3rd May, Sat: Continue with UI Prototyping
 

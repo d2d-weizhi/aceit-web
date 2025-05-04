@@ -138,7 +138,14 @@ export default function Dashboard() {
               className={`mr-4 w-8 aspect-square p-1 items-center justify-center rounded-sm border-1 ${item.isDone ? "bg-green-700 border-green-500" : " border-gray-300" }`}>
               {item.isDone && <Check color="white" width={20} height={20} />}
             </button>
-            <span className={item.isDone && "line-through text-gray-400"}>{item.title}</span>&nbsp;
+            {item.isDone ? (
+              <span className="line-through text-gray-400">
+                {item.title}
+              </span>
+              ) : (
+                <span>{item.title}</span>
+              )}
+              &nbsp;
           </div>
           <div className="flex w-[15%] items-center justify-start px-4 text-lg h-full">
             {item.hasAlarm && <span><em>{formattedAlarmDate}</em></span>}&nbsp;{item.hasAlarm && <Bell width={16} height={16} />}
