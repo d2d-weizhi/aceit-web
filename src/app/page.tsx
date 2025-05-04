@@ -5,6 +5,19 @@ import Image from "next/image";
 import SideDrawer from "@/shared/components/sidedrawer";
 import { AceItTabBar } from "@/shared/components/aceit-tabbar";
 
+import { ExpansionPanel, ExpansionPanelContent, ExpansionPanelActionEvent } from '@progress/kendo-react-layout';
+import { Reveal } from '@progress/kendo-react-animation';
+
+import {
+  Gantt,
+  GanttWeekView,
+  GanttMonthView,
+  GanttDayView,
+  GanttTextFilter,
+  GanttTaskModelFields,
+  GanttDependencyModelFields
+} from '@progress/kendo-react-gantt';
+
 import {
   Chart,
   ChartTitle,
@@ -16,10 +29,46 @@ import {
   PlotAreaClickEvent
 } from '@progress/kendo-react-charts';
 
-import data from '@/shared/data/sample-pm-data';
+import { assignmentsData, ganttTasksDependencies, ganttTasksData, pmProfileData } from '@/shared/data/sample-aceit-data';
+
+const ganttStyle = {
+  height: 500,
+  width: '100%'
+};
+
+const taskModelFields: GanttTaskModelFields = {
+  id: 'id',
+  start: 'start',
+  end: 'end',
+  title: 'title',
+  percentComplete: 'percentComplete',
+  isRollup: 'isRollup',
+  isExpanded: 'isExpanded',
+  isInEdit: 'isInEdit',
+  children: 'subtasks'
+};
+const dependencyModelFields: GanttDependencyModelFields = {
+  id: 'id',
+  fromId: 'fromId',
+  toId: 'toId',
+  type: 'type'
+};
+const columns = [
+  {
+      field: taskModelFields.title,
+      title: 'Title',
+      width: 180,
+      expandable: true
+  }
+];
 
 export default function Dashboard() {
+  const [activeAssignmentPanel, setActiveAssignmentPanel] = useState<string>("asn16253");
   const [activeTab, setActiveTab] = useState<string>("Home");
+
+  const [taskData] = useState(ganttTasksData);
+  const [dependencyData] = useState(ganttTasksDependencies);
+
   const [isShowRightPanel, setIsShowRightPanel] = useState(false);
   const refreshChart = false;
 
@@ -63,7 +112,67 @@ export default function Dashboard() {
             {/* AceItTabContent - Initial Content */}
             <div className="aceit-tab-content">
               {activeTab === "Home" ? (
-                <h2>Home View Section</h2>
+                <div className="items-center justify-center w-full h-full p-8">
+                  <div className="flex justify-start items-center w-full">
+                    <h2 className="section-header">On-going Assignments:</h2>
+                  </div>
+
+                  {/* On-going Assignments Section starts here. */}
+
+                  {assignmentsData.map((assignment) => (
+                    <ExpansionPanel
+                      title={assignment.title}
+                      subtitle={`Deadline: ${assignment.duedate}`}
+                      expanded={activeAssignmentPanel === assignment.id}
+                      tabIndex={0}
+                      key={assignment.id}
+                      onAction={(event: ExpansionPanelActionEvent) => {
+                        setActiveAssignmentPanel(event.expanded ? '' : assignment.id)
+                      }}
+                    >
+                      <Reveal>
+                        {activeAssignmentPanel === assignment.id && (
+                          <ExpansionPanelContent>
+                            <Gantt
+                              style={ganttStyle}
+                              taskData={taskData}
+                              taskModelFields={taskModelFields}
+                              dependencyData={dependencyData}
+                              rowHeight={40}
+                              dependencyModelFields={dependencyModelFields}
+                              columns={columns}
+                              defaultView="week"
+                            >
+                              <GanttWeekView />
+                              <GanttMonthView />
+                            </Gantt>
+                          </ExpansionPanelContent>
+                        )}
+                      </Reveal>
+                    </ExpansionPanel>
+                  ))}
+
+                  {/* On-going Assignments Section ends here. */}
+
+                  <div className="h-8 w-full" />
+
+                  <div className="flex justify-start items-center w-full">
+                    <h2 className="section-header">Current/Upcoming Tasks:</h2>
+                  </div>
+
+                  {/* Current/Upcoming Tasks Section starts here. */}
+                  {/* Current/Upcoming Tasks Section ends here. */}
+
+                  <div className="h-8 w-full" />
+
+                  <div className="flex justify-start items-center w-full">
+                    <h2 className="section-header">Current/Upcoming Reminders:</h2>
+                  </div>
+
+                  {/* Current/Upcoming Reminders Section starts here. */}
+                  {/* Current/Upcoming Reminders Section ends here. */}
+
+                </div>
               ) : (
                 <div className="items-center justify-center w-full h-full p-8"> {/* Main container for our Stats View */}
                   <div className="flex justify-start items-center w-full">
@@ -133,7 +242,7 @@ export default function Dashboard() {
                           type="radarArea"
                           style="smooth"
                           color={"#3f51b5"}
-                          data={data}
+                          data={pmProfileData}
                           field="score"
                           categoryField="name"
                           name="Skill Score"

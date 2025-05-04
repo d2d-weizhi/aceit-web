@@ -313,6 +313,16 @@ _(Potential Pages + Logical Work Units)_
 
 ## Daily Logs (Latest to Oldest)
 
+### 4th May, Sun: Home View UI Prototyping
+
+- **TODO:** When I have the time, I should do some digging to see if we can scroll the view to the current date.
+- **TODO:** I also want to figure out how to customize the dates in Week View mode to just `"dd/MM"`, and remove the short day of the week (e.g. "Mon", "Tue", etc). 
+
+- Added the `ExpansionPanel`. It is no longer called Accordion.
+- By default, I will display top 3 on-going assignments with upcoming deadlines.
+- I've also added a sample Gantt Chart view into the content areas.
+- 
+
 ### 3rd May, Sat: Continue with UI Prototyping
 
 - _**TODO: Figure out how to make the SideDrawer slide in from underneath the menu button instead of over it.**_
