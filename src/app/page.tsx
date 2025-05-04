@@ -87,7 +87,7 @@ export default function Dashboard() {
   const refreshChart = false;
 
   const homeTaskItemRender = (props: ListViewItemProps) => {
-    let item = props.dataItem;
+    const item = props.dataItem;
 
     // Format the date as "dd MMM"
     const formattedDueDate = new Date(item.duedate).toLocaleDateString('en-US', {
@@ -118,7 +118,7 @@ export default function Dashboard() {
   };
 
   const homeReminderRender = (props: ListViewItemProps) => {
-    let item = props.dataItem;
+    const item = props.dataItem;
 
     const formattedAlarmDate = new Date(item.alarmDate).toLocaleString("en-SG", {
       day: "numeric",
@@ -155,7 +155,7 @@ export default function Dashboard() {
     );
   };
 
-  function chartDrillDown(event: PlotAreaClickEvent) {
+  function chartDrillDown() {
     setIsShowRightPanel(!isShowRightPanel);
   }
 
