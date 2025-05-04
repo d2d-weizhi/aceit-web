@@ -321,7 +321,7 @@ _(Potential Pages + Logical Work Units)_
 - Added the `ExpansionPanel`. It is no longer called Accordion.
 - By default, I will display top 3 on-going assignments with upcoming deadlines.
 - I've also added a sample Gantt Chart view into the content areas.
-- 
+- Added some sample data into `sample-aceit-data.ts`.
 
 ### 3rd May, Sat: Continue with UI Prototyping
 
