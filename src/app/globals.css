@@ -48,6 +48,11 @@ h2 {
   border-color: #3f51b5; /* Show the border for active tab */
 }
 
+.section-header-wrapper {
+  border-bottom: 1px solid rgba(21, 21, 21, .5); /* Thin light gray line */
+  margin-bottom: 1rem; /* Add some bottom margin */
+}
+
 .section-header {
   font-size: 1rem; /* Adjust font size as needed */
   line-height: 1.4rem;
@@ -57,11 +62,9 @@ h2 {
   width: 100%;
   letter-spacing: 0.05em; /* Add a touch of letter spacing */
   color: #333; /* Adjust color as needed */
-  margin-bottom: 1rem; /* Add some bottom margin */
   margin-left: 8px;
   margin-right: 8px;
   padding-bottom: 0.25rem; /* Add padding for the line */
-  border-bottom: 1px solid rgba(21, 21, 21, .5); /* Thin light gray line */
 }
 
 .stats-figure {

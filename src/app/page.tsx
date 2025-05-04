@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { BellPlus, Bell, Check } from "lucide-react";
 import SideDrawer from "@/shared/components/sidedrawer";
 import { AceItTabBar } from "@/shared/components/aceit-tabbar";
 
@@ -12,8 +13,6 @@ import {
   Gantt,
   GanttWeekView,
   GanttMonthView,
-  GanttDayView,
-  GanttTextFilter,
   GanttTaskModelFields,
   GanttDependencyModelFields
 } from '@progress/kendo-react-gantt';
@@ -31,7 +30,8 @@ import {
   PlotAreaClickEvent
 } from '@progress/kendo-react-charts';
 
-import { assignmentsData, ganttTasksDependencies, ganttTasksData, homeTasksData, pmProfileData } from '@/shared/data/sample-aceit-data';
+import { assignmentsData, ganttTasksDependencies, ganttTasksData, homeTasksData, homeRemindersData, pmProfileData } from '@/shared/data/sample-aceit-data';
+import CircularProgressBar from "@/shared/components/circular-progress-bar";
 
 const ganttStyle = {
   height: 500,
@@ -96,11 +96,53 @@ export default function Dashboard() {
     });
 
     return (
-      <ListViewItemWrapper className="h-[60px]" style={{ borderBottom: '1px solid lightgrey' }}>
-        <div 
-          className={`flex h-full p-[5px] text-lg w-[100%] items-center ${item.dueSoon && "font-bold"}`}
-        >
-          {item.title} | {formattedDueDate}
+      <ListViewItemWrapper className="h-[80px]" style={{ borderBottom: '1px solid lightgrey' }}>
+        <div className="flex flex-row h-full p-[5px] w-[100%]">
+          <div className="flex-1 flex-col h-full">
+            <div className={`flex-1 flex-row items-center justify-start text-2xl ${item.dueSoon && "font-bold"}`}>
+              {item.title} | {formattedDueDate}
+            </div>
+            <div className="flex items-center justify-start text-sm font-semibold"><em>{item.assignment}</em></div>
+          </div>
+          <div className="flex flex-col, h-full items-center justify-center w-[84px]">
+            <div className="flex flex-col w-1/2 h-full items-center justify-center mr-1 text-lg">
+              {item.percentCompleted * 100}%
+            </div>
+            <div className="flex flex-col w-1/2 aspect-square">
+              <CircularProgressBar value={parseFloat(item.percentCompleted)} />
+            </div>
+          </div>
+        </div>
+      </ListViewItemWrapper>
+    );
+  };
+
+  const homeReminderRender = (props: ListViewItemProps) => {
+    let item = props.dataItem;
+
+    const formattedAlarmDate = new Date(item.alarmDate).toLocaleString("en-SG", {
+      day: "numeric",
+      month: "short",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+      timeZone: item.timeZone
+    });
+
+    return (
+      <ListViewItemWrapper className="p-[5px] h-[60px]" style={{ borderBottom: '1px solid lightgrey' }}>
+        <div className="flex flex-row w-full h-full">
+          <div className="flex w-[85%] justify-start items-center px-4 text-lg h-full">
+            <button 
+              type="button" 
+              className={`mr-4 w-8 aspect-square p-1 items-center justify-center rounded-sm border-1 ${item.isDone ? "bg-green-700 border-green-500" : " border-gray-300" }`}>
+              {item.isDone && <Check color="white" width={20} height={20} />}
+            </button>
+            <span className={item.isDone && "line-through text-gray-400"}>{item.title}</span>&nbsp;
+          </div>
+          <div className="flex w-[15%] items-center justify-start px-4 text-lg h-full">
+            {item.hasAlarm && <span><em>{formattedAlarmDate}</em></span>}&nbsp;{item.hasAlarm && <Bell width={16} height={16} />}
+          </div>
         </div>
       </ListViewItemWrapper>
     );
@@ -147,7 +189,7 @@ export default function Dashboard() {
             <div className="aceit-tab-content">
               {activeTab === "Home" ? (
                 <div className="items-center justify-center w-full h-full p-8">
-                  <div className="flex justify-start items-center w-full">
+                  <div className="flex justify-start items-center w-full section-header-wrapper">
                     <h2 className="section-header">On-going Assignments:</h2>
                   </div>
 
@@ -190,21 +232,32 @@ export default function Dashboard() {
 
                   <div className="h-8 w-full" />
 
-                  <div className="flex justify-start items-center w-full">
+                  <div className="flex justify-start items-center w-full section-header-wrapper">
                     <h2 className="section-header">Current/Upcoming Tasks:</h2>
                   </div>
 
                   {/* Current/Upcoming Tasks Section starts here. */}
-                  <ListView data={homeTasksData} item={homeTaskItemRender} style={{ width: '100%', height: 300 }} />
+                  <ListView data={homeTasksData} item={homeTaskItemRender} style={{ width: '100%', height: 400 }} />
                   {/* Current/Upcoming Tasks Section ends here. */}
 
                   <div className="h-8 w-full" />
 
-                  <div className="flex justify-start items-center w-full">
-                    <h2 className="section-header">Current/Upcoming Reminders:</h2>
+                  <div className="flex items-center w-full section-header-wrapper">
+                    <div className="flex-1 flex-col justify-start items-center">
+                      <h2 className="section-header">
+                        Current/Upcoming Reminders:
+                      </h2>
+                    </div>
+                    <div className="flex justify-center items-center w-5 p-1 aspect-square">
+                      {/* Add button within a separate element */}
+                      <button type="button" className="h-4 w-4 cursor-pointer"> 
+                        <BellPlus className="h-4 w-4" /> 
+                      </button>
+                    </div>
                   </div>
 
                   {/* Current/Upcoming Reminders Section starts here. */}
+                  <ListView data={homeRemindersData} item={homeReminderRender} style={{ width: '100%', height: 200 }} />
                   {/* Current/Upcoming Reminders Section ends here. */}
 
                 </div>

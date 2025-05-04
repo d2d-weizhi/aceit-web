@@ -58,7 +58,7 @@ export const ganttTasksData = [
         title: 'Moodboards & Stylescapes',
         start: new Date('2025-05-06T00:00:00.000Z'),
         end: new Date('2025-05-12T00:00:00.000Z'),
-        percentComplete: 0.615263
+        percentComplete: 0.357687
       }
     ],
   }
@@ -94,13 +94,15 @@ export const ganttTasksDependencies = [
 export const homeTasksData = [
   {
     id: "8js61ns98ss6",
+    assignment: "DX2361 | Build a UX Prototype for a Digital Product.",
     title: "Work on the 2nd Moodboard",
     duedate: new Date('2025-05-04T00:00:00.000Z'),
-    percentCompleted: 0.85,
+    percentCompleted: 0.8,
     dueSoon: true
   },
   {
     id: "16256ha6s57a",
+    assignment: "DX2361 | Build a UX Prototype for a Digital Product.",
     title: "Work on the 3rd Moodboard",
     duedate: new Date('2025-05-06T00:00:00.000Z'),
     percentCompleted: 0.6,
@@ -108,6 +110,7 @@ export const homeTasksData = [
   },
   {
     id: "26172636556a",
+    assignment: "DX1162 | Build a Responsive Web Application/Website.",
     title: "Refine the Sitemap for GoStart (w/ Lecturer Feedbacks)",
     duedate: new Date('2025-05-08T00:00:00.000Z'),
     percentCompleted: 0.25,
@@ -115,6 +118,7 @@ export const homeTasksData = [
   },
   {
     id: "b87a8s6576s",
+    assignment: "DX1162 | Build a Responsive Web Application/Website.",
     title: "Start building the digital wireframes (web).",
     duedate: new Date('2025-05-09T00:00:00.000Z'),
     percentCompleted: 0,
@@ -122,10 +126,38 @@ export const homeTasksData = [
   },
   {
     id: "a78ns6765d8",
+    assignment: "DX1162 | Build a Responsive Web Application/Website.",
     title: "Start building the digital wireframes (mobile).",
     duedate: new Date('2025-05-11T00:00:00.000Z'),
     percentCompleted: 0,
     dueSoon: false
+  }
+];
+
+export const homeRemindersData = [
+  {
+    id: "17127367s7d",
+    title: "Your first task reminder.",
+    hasAlarm: true,
+    alarmDate: new Date('2025-05-04T13:30:00.000Z'),
+    timeZone: "Asia/Singapore",
+    isDone: true
+  },
+  {
+    id: "727266s773",
+    title: "Your second task reminder.",
+    hasAlarm: false,
+    alarmDate: new Date('2025-05-11T00:00:00.000Z'),
+    timeZone: "Asia/Singapore",
+    isDone: false
+  },
+  {
+    id: "ahs765sjj2",
+    title: "Your third task reminder.",
+    hasAlarm: false,
+    alarmDate: new Date('2025-05-11T00:00:00.000Z'),
+    timeZone: "Asia/Singapore",
+    isDone: false
   }
 ];
 
