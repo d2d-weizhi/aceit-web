@@ -26,8 +26,7 @@ import {
   ChartValueAxis,
   ChartValueAxisItem,
   ChartSeries,
-  ChartSeriesItem,
-  PlotAreaClickEvent
+  ChartSeriesItem
 } from '@progress/kendo-react-charts';
 
 import { assignmentsData, ganttTasksDependencies, ganttTasksData, homeTasksData, homeRemindersData, pmProfileData } from '@/shared/data/sample-aceit-data';
@@ -159,7 +158,7 @@ export default function Dashboard() {
     setIsShowRightPanel(!isShowRightPanel);
   }
 
-  // @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
   const handleChartRefresh = (chartOptions: any, themeOptions: any, chartInstance: any) => {
     if (refreshChart) {
         chartInstance.setOptions(chartOptions, themeOptions);
