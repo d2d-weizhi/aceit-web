@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { BellPlus, Bell, Check } from "lucide-react";
+import { BellPlus, Bell, Check, X } from "lucide-react";
 import SideDrawer from "@/shared/components/sidedrawer";
 import { AceItTabBar } from "@/shared/components/aceit-tabbar";
 
@@ -23,13 +23,40 @@ import {
   Chart,
   ChartTitle,
   ChartLegend,
+  ChartCategoryAxis,
+  ChartCategoryAxisTitle,
+  ChartCategoryAxisItem,
   ChartValueAxis,
   ChartValueAxisItem,
   ChartSeries,
-  ChartSeriesItem
+  ChartSeriesItem,
+  ChartSeriesLabels,
+  ChartSeriesLabelsFrom,
+  ChartSeriesLabelsTo
 } from '@progress/kendo-react-charts';
 
-import { assignmentsData, ganttTasksDependencies, ganttTasksData, homeTasksData, homeRemindersData, pmProfileData } from '@/shared/data/sample-aceit-data';
+import { 
+  assignmentsData, 
+  ganttTasksDependencies, 
+  ganttTasksData, 
+  homeTasksData, 
+  homeRemindersData, 
+  pmProfileData,
+  avgGradeHistoData,
+  gradeCategoriesData,
+  assignmentHistoryData,
+  submissionRatingData,
+  submissionHistoryData,
+  overallAppraisalRating,
+  sem1Appraisal,
+  semesters,
+  sem2Appraisal,
+  sem3Appraisal
+} from '@/shared/data/sample-aceit-data';
+
+import { Grid, GridColumn as Column } from "@progress/kendo-react-grid";
+import { DropDownList, DropDownListChangeEvent } from "@progress/kendo-react-dropdowns";
+
 import CircularProgressBar from "@/shared/components/circular-progress-bar";
 
 const ganttStyle = {
@@ -75,6 +102,12 @@ const columns = [
   }
 ];
 
+interface SemAppraisalInterface {
+  name: string;
+  min: number;
+  max: number;
+}
+
 export default function Dashboard() {
   const [activeAssignmentPanel, setActiveAssignmentPanel] = useState<string>("asn16253");
   const [activeTab, setActiveTab] = useState<string>("Home");
@@ -83,6 +116,22 @@ export default function Dashboard() {
   const [dependencyData] = useState(ganttTasksDependencies);
 
   const [isShowRightPanel, setIsShowRightPanel] = useState(false);
+  const [isShowGradesSummary, setIsShowGradesSummary] = useState(false);
+  const [isShowSubmissionSummary, setIsShowSubmissionSummary] = useState(false);
+  const [isShowAppraisalSummary, setIsShowAppraisalSummary] = useState(false);
+  const [selectedSem, setSelectedSem] = useState({
+    value: { text: "Semester 1", id: 1 }
+  });
+  const [currSemAppraisal, setCurrSemAppraisal] = useState<SemAppraisalInterface[]>(sem1Appraisal);
+  const refreshAppraisal = true;
+
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  const refreshAppraisalChart = (chartOptions: any, themeOptions: any, chartInstance: any) => {
+    if (refreshAppraisal) {
+      chartInstance.setOptions(chartOptions, themeOptions);
+    }
+  }
+
   const refreshChart = false;
 
   const homeTaskItemRender = (props: ListViewItemProps) => {
@@ -167,6 +216,7 @@ export default function Dashboard() {
 
   return (
     <div className="flex flex-row bg-gray-300 w-screen justify-center items-center">
+      {/* Left Panel starts here. */}
 			<div 
 				className=" flex flex-col bg-white p-4 h-screen overflow-y-auto w-[50%] z-10 transition-all duration-250 ease-out"
 				style={{
@@ -278,7 +328,10 @@ export default function Dashboard() {
                   <div className="flex justify-center items-center gap-8 w-full">
                     <div 
                       className="flex flex-col items-center justify-center align-top w-1/3 stats-widget rounded-xl bg-gray-100 p-8"
-                      onClick={() => setIsShowRightPanel(!isShowRightPanel)}
+                      onClick={() => {
+                        setIsShowRightPanel(!isShowRightPanel);
+                        setIsShowGradesSummary(!isShowGradesSummary);
+                      }}
                     >
                       <span className="text-sm font-medium text-gray-600 align-top">
                         Avg. Grade
@@ -289,7 +342,10 @@ export default function Dashboard() {
                     </div>
                     <div 
                       className="flex flex-col items-center justify-center align-top w-1/3 stats-widget rounded-xl bg-gray-100 p-8"
-                      onClick={() => setIsShowRightPanel(!isShowRightPanel)}  
+                      onClick={() => {
+                        setIsShowRightPanel(!isShowRightPanel);
+                        setIsShowSubmissionSummary(!isShowSubmissionSummary);
+                      }}  
                     >
                       <span className="text-sm font-medium text-gray-600 align-top">
                         Submission Rating
@@ -300,7 +356,10 @@ export default function Dashboard() {
                     </div>
                     <div 
                       className="flex flex-col items-center justify-center align-top w-1/3 stats-widget rounded-xl bg-gray-100 p-8"
-                      onClick={() => setIsShowRightPanel(!isShowRightPanel)}
+                      onClick={() => {
+                        setIsShowRightPanel(!isShowRightPanel);
+                        setIsShowAppraisalSummary(!isShowAppraisalSummary);
+                      }}
                     >
                       <span className="text-sm font-medium text-gray-600 align-top">
                         Appraisal Rating
@@ -357,6 +416,9 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+      {/* Left Panel ends here. */}
+
+      {/* Right Panel starts here. */}
       <div 
 				className="flex-col bg-white p-4 relative h-screen overflow-y-auto w-[50%] opacity-0 z-1 transition-all duration-250 ease-out"
 				style={{
@@ -364,9 +426,193 @@ export default function Dashboard() {
 					opacity: isShowRightPanel ? 1 : 0
 				}}
 			>
-				{/* ... your other Dashboard content ... */}
-				<h2>Right Panel here</h2>
+        <div className="flex flex-row items-end justify-end p-2 h-max">
+          <button 
+            type="button" 
+            onClick={() => {
+              setIsShowRightPanel(false);
+              setIsShowGradesSummary(false);
+              setIsShowSubmissionSummary(false);
+              setIsShowAppraisalSummary(false);
+            }}
+          >
+            <X width={48} height={48} />
+          </button>
+        </div>
+
+        <div className="flex flex-row-1 justify-center items-start w-full">
+          {isShowGradesSummary &&
+            <div className="flex flex-col w-full justify-center items-center p-[5%]">
+              <Chart style={{width: "90%", height: 500}}>
+                <ChartTitle text="Average Grades" />
+                <ChartCategoryAxis>
+                  <ChartCategoryAxisItem categories={gradeCategoriesData}>
+                    <ChartCategoryAxisTitle text="Grades" />
+                  </ChartCategoryAxisItem>
+                </ChartCategoryAxis>
+                <ChartSeries>
+                  <ChartSeriesItem type="column" gap={.25} data={avgGradeHistoData} color={"#3f51b5"} />
+                </ChartSeries>
+              </Chart>
+
+              <div className="h-8 w-full" />
+              
+              <div className="flex justify-start items-center w-full section-header-wrapper">
+                <h2 className="section-header">Your Assignment History:</h2>
+              </div>
+
+              <Grid
+                style={{ height: "500px", width: "100%" }}
+                data={assignmentHistoryData}
+                dataItemKey="id"
+                sortable={true}
+                filterable={true}
+                pageable={true}
+                editable={{ enabled: false, mode: undefined }}
+                pageSize={10}
+              >
+                <Column field="id" title="ID" editable={false} filterable={false} width="90px" />
+                <Column field="assignment" title="Assignment" />
+                <Column field="module" title="Module" width="190px" />
+                <Column field="dateCompleted" title="Completed On" width="150px" />
+                <Column field="finalGrade" title="Grade" width="120px" />
+              </Grid>
+
+            </div>
+          }
+
+          {isShowSubmissionSummary &&
+            <div className="flex flex-col w-full justify-center items-center p-[5%]">
+              <Chart style={{width: 500, height: 500}}>
+                <ChartTitle text="Submission Rating" />
+                <ChartSeries>
+                  <ChartSeriesItem type="donut" data={submissionRatingData} categoryField="kind"
+                  field="percent">
+                    <ChartSeriesLabels color="#fff" background="none" content={(e) => e.category} />
+                  </ChartSeriesItem>
+                </ChartSeries>
+                <ChartLegend visible={false} />
+              </Chart>
+
+              <div className="h-8 w-full" />
+              
+              <div className="flex justify-start items-center w-full section-header-wrapper">
+                <h2 className="section-header">Your Assignment History:</h2>
+              </div>
+
+              <Grid
+                style={{ height: "500px", width: "100%" }}
+                data={submissionHistoryData}
+                dataItemKey="id"
+                sortable={true}
+                filterable={true}
+                pageable={true}
+                editable={{ enabled: false, mode: undefined }}
+                pageSize={10}
+              >
+                <Column field="id" title="ID" editable={false} filterable={false} width="90px" />
+                <Column field="assignment" title="Assignment" />
+                <Column field="module" title="Module" width="190px" />
+                <Column field="submission" title="Submission" width="180px" />
+                <Column field="finalGrade" title="Grade" width="120px" />
+              </Grid>
+
+            </div>
+          }
+
+          {isShowAppraisalSummary &&
+            <div className="flex flex-col w-full justify-center items-center p-[5%]">
+              <Chart 
+                renderAs={"canvas"}
+                onRefresh={handleChartRefresh}
+                style={{
+                  width: "900px",
+                  minWidth: "700px",
+                  height: "800px",
+                  minHeight: "600px",
+                  fontSize: "1.2rem"
+                }}
+              >
+                <ChartSeries>
+                  <ChartSeriesItem
+                    type="radarArea"
+                    style="smooth"
+                    color={"#e51a5f"}
+                    data={overallAppraisalRating}
+                    field="score"
+                    categoryField="name"
+                    name="Skill Score"
+                  />
+                </ChartSeries>
+                <ChartValueAxis>
+                  <ChartValueAxisItem labels={{ format: '0' }} max={10} min={0} />
+                </ChartValueAxis>
+                <ChartTitle position={"bottom"} text="Overall Peer Appraisal Rating" />
+                <ChartLegend visible={false} />
+              </Chart>
+
+              <div className="h-8 w-full" />
+              
+              <div className="flex justify-start items-center w-full section-header-wrapper">
+                <h2 className="section-header">Your Appraisal Summary (by Semester):</h2>
+              </div>
+
+              <div className="flex justify-end items-center w-full">
+                <DropDownList 
+                  id="semesters" 
+                  data={semesters} 
+                  textField="text" 
+                  dataItemKey="id"
+                  value={selectedSem.value}
+                  onChange={
+                    (event: DropDownListChangeEvent) => {
+                      setSelectedSem({value: event.target.value});
+                      if (parseInt(event.target.value.id) == 1)
+                        setCurrSemAppraisal(sem1Appraisal);
+                      else if (parseInt(event.target.value.id) == 2)
+                        setCurrSemAppraisal(sem2Appraisal);
+                      else if (parseInt(event.target.value.id) == 3)
+                        setCurrSemAppraisal(sem3Appraisal);
+                    }
+                  }
+                  style={{ width: 300 }}
+                />
+              </div>
+
+              <Chart style={{
+                  width: "900px",
+                  minWidth: "700px",
+                  height: "500px",
+                  minHeight: "400px",
+                  fontSize: "1.2rem"
+                }}
+                onRefresh={refreshAppraisalChart}  
+              >
+                <ChartTitle text="Appraisal Rating (by Category)" position="bottom" />
+                <ChartSeries>
+                  <ChartSeriesItem 
+                    type="rangeColumn" 
+                    data={currSemAppraisal} 
+                    fromField="min"
+                    toField="max"
+                    categoryField="name"
+                  >
+                    <ChartSeriesLabels>
+                      <ChartSeriesLabelsFrom content={(e) => `${e.value.from}`} />
+                      <ChartSeriesLabelsTo content={(e) => `${e.value.to}`} />
+                    </ChartSeriesLabels>
+                  </ChartSeriesItem>
+                </ChartSeries>
+                <ChartCategoryAxis>
+                  <ChartCategoryAxisItem labels={{ rotation: "auto" }} />
+                </ChartCategoryAxis>
+              </Chart>
+
+            </div>
+          }
+        </div>
 			</div>
+      {/* Right Panel ends here. */}
     </div>
   );
 }

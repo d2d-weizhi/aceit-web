@@ -318,6 +318,14 @@ _(Potential Pages + Logical Work Units)_
 - When I have the time, I should do some digging to see if we can scroll the view to the current date.
 - I also want to figure out how to customize the dates in Week View mode to just `"dd/MM"`, and remove the short day of the week (e.g. "Mon", "Tue", etc). 
 
+### 7th May, Wed: Stats View > Summary Drill-Down (Right Panel)
+
+- Added the relevant charts and grids for each Key Stats.
+- Added the state variables to toggle between the different summary views.
+- Decided to modify the Appraisal Rating Summary Chart into a RangeBar series.
+- The Appraisal Summary chart can be toggled by a DropDownList control.
+- Next steps: Do the summary drilldown for "Project Management Profile".
+
 ### 4th May, Sun: Home View UI Prototyping
 
 - Added the `ExpansionPanel`. It is no longer called Accordion.
