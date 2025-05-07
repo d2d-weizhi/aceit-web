@@ -324,7 +324,7 @@ _(Potential Pages + Logical Work Units)_
 - Added the state variables to toggle between the different summary views.
 - Decided to modify the Appraisal Rating Summary Chart into a RangeBar series.
 - The Appraisal Summary chart can be toggled by a DropDownList control.
-- Next steps: Do the summary drilldown for "Project Management Profile".
+- Did part of the summary drilldown for "Project Management Profile".
 
 ### 4th May, Sun: Home View UI Prototyping
 

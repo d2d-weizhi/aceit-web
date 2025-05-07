@@ -51,7 +51,10 @@ import {
   sem1Appraisal,
   semesters,
   sem2Appraisal,
-  sem3Appraisal
+  sem3Appraisal,
+  sem1PMProfile,
+  sem2PMProfile,
+  sem3PMProfile
 } from '@/shared/data/sample-aceit-data';
 
 import { Grid, GridColumn as Column } from "@progress/kendo-react-grid";
@@ -108,6 +111,12 @@ interface SemAppraisalInterface {
   max: number;
 }
 
+interface SemPMProfileInterface {
+  name: string;
+  min: number;
+  max: number;
+}
+
 export default function Dashboard() {
   const [activeAssignmentPanel, setActiveAssignmentPanel] = useState<string>("asn16253");
   const [activeTab, setActiveTab] = useState<string>("Home");
@@ -119,15 +128,25 @@ export default function Dashboard() {
   const [isShowGradesSummary, setIsShowGradesSummary] = useState(false);
   const [isShowSubmissionSummary, setIsShowSubmissionSummary] = useState(false);
   const [isShowAppraisalSummary, setIsShowAppraisalSummary] = useState(false);
+  const [isShowPMProfileSummary, setIsShowPMProfileSummary] = useState(false);
   const [selectedSem, setSelectedSem] = useState({
     value: { text: "Semester 1", id: 1 }
   });
   const [currSemAppraisal, setCurrSemAppraisal] = useState<SemAppraisalInterface[]>(sem1Appraisal);
+  const [currSemPMProfile, setCurrSemPMProfile] = useState<SemPMProfileInterface[]>(sem1PMProfile);
   const refreshAppraisal = true;
+  const refreshPMProfile = true;
 
   // eslint-disable-next-line  @typescript-eslint/no-explicit-any
   const refreshAppraisalChart = (chartOptions: any, themeOptions: any, chartInstance: any) => {
     if (refreshAppraisal) {
+      chartInstance.setOptions(chartOptions, themeOptions);
+    }
+  }
+
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  const refreshPMProfileChart = (chartOptions: any, themeOptions: any, chartInstance: any) => {
+    if (refreshPMProfile) {
       chartInstance.setOptions(chartOptions, themeOptions);
     }
   }
@@ -205,6 +224,7 @@ export default function Dashboard() {
 
   function chartDrillDown() {
     setIsShowRightPanel(!isShowRightPanel);
+    setIsShowPMProfileSummary(!isShowPMProfileSummary);
   }
 
   // eslint-disable-next-line  @typescript-eslint/no-explicit-any
@@ -434,6 +454,10 @@ export default function Dashboard() {
               setIsShowGradesSummary(false);
               setIsShowSubmissionSummary(false);
               setIsShowAppraisalSummary(false);
+              setIsShowPMProfileSummary(false);
+              setSelectedSem({
+                value: { text: "Semester 1", id: 1 }
+              });
             }}
           >
             <X width={48} height={48} />
@@ -608,6 +632,67 @@ export default function Dashboard() {
                 </ChartCategoryAxis>
               </Chart>
 
+            </div>
+          }
+
+          {isShowPMProfileSummary && 
+            <div className="flex flex-col w-full justify-center items-center p-[5%]">
+              <div className="flex justify-start items-center w-full section-header-wrapper">
+                <h2 className="section-header">Your Project Management Profile (by Semester):</h2>
+              </div>
+
+              <div className="flex justify-end items-center w-full">
+                <DropDownList 
+                  id="semesters" 
+                  data={semesters} 
+                  textField="text" 
+                  dataItemKey="id"
+                  value={selectedSem.value}
+                  onChange={
+                    (event: DropDownListChangeEvent) => {
+                      setSelectedSem({value: event.target.value});
+                      if (parseInt(event.target.value.id) == 1)
+                        setCurrSemPMProfile(sem1PMProfile);
+                      else if (parseInt(event.target.value.id) == 2)
+                        setCurrSemPMProfile(sem2PMProfile);
+                      else if (parseInt(event.target.value.id) == 3)
+                        setCurrSemPMProfile(sem3PMProfile);
+                    }
+                  }
+                  style={{ width: 300 }}
+                />
+              </div>
+
+              <Chart style={{
+                  width: "900px",
+                  minWidth: "700px",
+                  height: "500px",
+                  minHeight: "400px",
+                  fontSize: "1.2rem"
+                }}
+                onRefresh={refreshPMProfileChart}  
+              >
+                <ChartTitle text="PM Profile Summary (by Category)" position="bottom" />
+                <ChartSeries>
+                  <ChartSeriesItem 
+                    type="rangeColumn" 
+                    data={currSemPMProfile} 
+                    minSize={1}
+                    maxSize={10}
+                    fromField="min"
+                    toField="max"
+                    categoryField="name"
+                  >
+                    <ChartSeriesLabels>
+                      <ChartSeriesLabelsFrom content={(e) => `${e.value.from}`} />
+                      <ChartSeriesLabelsTo content={(e) => `${e.value.to}`} />
+                    </ChartSeriesLabels>
+                  </ChartSeriesItem>
+                </ChartSeries>
+                <ChartCategoryAxis>
+                  <ChartCategoryAxisItem labels={{ rotation: "auto" }} />
+                </ChartCategoryAxis>
+              </Chart>
             </div>
           }
         </div>

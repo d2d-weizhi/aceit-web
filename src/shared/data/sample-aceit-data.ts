@@ -302,26 +302,26 @@ export const submissionHistoryData = [
 ];
 
 export const overallAppraisalRating = [
-    {
-        name: 'Communication',
-        score: 7
-    },
-    {
-        name: 'Contribution',
-        score: 6
-    },
-    {
-        name: 'Problem-Solving',
-        score: 8
-    },
-    {
-        name: 'Teamwork',
-        score: 6
-    },
-    {
-        name: 'Professionalism',
-        score: 7
-    },
+  {
+    name: 'Communication',
+    score: 7
+  },
+  {
+    name: 'Contribution',
+    score: 6
+   },
+  {
+    name: 'Problem-Solving',
+    score: 8
+  },
+  {
+    name: 'Teamwork',
+    score: 6
+  },
+  {
+    name: 'Professionalism',
+    score: 7
+  },
 ];
 
 export const sem1Appraisal = [
@@ -412,4 +412,88 @@ export const semesters = [
   { text: "Semester 1", id: 1 },
   { text: "Semester 2", id: 2 },
   { text: "Semester 3", id: 3 }
+];
+
+export const sem1PMProfile = [
+  {
+    name: 'Communication',
+    min: 5.6,
+    max: 7.7
+  },
+  {
+    name: 'Contribution',
+    min: 6.1,
+    max: 7.8
+  },
+  {
+    name: 'Problem-Solving',
+    min: 7.1,
+    max: 8.4
+  },
+  {
+    name: 'Teamwork',
+    min: 7.6,
+    max: 8.6
+  },
+  {
+    name: 'Professionalism',
+    min: 6.1,
+    max: 7.3
+  },
+];
+
+export const sem2PMProfile = [
+  {
+    name: 'Communication',
+    min: 6.4,
+    max: 7.3
+  },
+  {
+    name: 'Contribution',
+    min: 6.8,
+    max: 8.1
+  },
+  {
+    name: 'Problem-Solving',
+    min: 7.0,
+    max: 8.6
+  },
+  {
+    name: 'Teamwork',
+    min: 6.9,
+    max: 8.1
+  },
+  {
+    name: 'Professionalism',
+    min: 7.1,
+    max: 7.9
+  },
+];
+
+export const sem3PMProfile = [
+  {
+    name: 'Communication',
+    min: 6.1,
+    max: 7.3
+  },
+  {
+    name: 'Contribution',
+    min: 6.8,
+    max: 7.9
+  },
+  {
+    name: 'Problem-Solving',
+    min: 6.7,
+    max: 8.5
+  },
+  {
+    name: 'Teamwork',
+    min: 6.5,
+    max: 7.5
+  },
+  {
+    name: 'Professionalism',
+    min: 6.5,
+    max: 7.6
+  },
 ];
