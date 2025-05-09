@@ -317,6 +317,7 @@ _(Potential Pages + Logical Work Units)_
 
 - When I have the time, I should do some digging to see if we can scroll the view to the current date.
 - I also want to figure out how to customize the dates in Week View mode to just `"dd/MM"`, and remove the short day of the week (e.g. "Mon", "Tue", etc). 
+- Finish adding the current semester feedback list and it's items.
 
 ### 7th May, Wed: Stats View > Summary Drill-Down (Right Panel)
 
@@ -325,6 +326,7 @@ _(Potential Pages + Logical Work Units)_
 - Decided to modify the Appraisal Rating Summary Chart into a RangeBar series.
 - The Appraisal Summary chart can be toggled by a DropDownList control.
 - Did part of the summary drilldown for "Project Management Profile".
+- Laid the groundwork for adding in the current semester feedback list and it's items.
 
 ### 4th May, Sun: Home View UI Prototyping
 
@@ -336,9 +338,6 @@ _(Potential Pages + Logical Work Units)_
 
 ### 3rd May, Sat: Continue with UI Prototyping
 
-- _**TODO: Figure out how to make the SideDrawer slide in from underneath the menu button instead of over it.**_
-- _**TODO: Finish adding in the on-going assignments and reminders to the Dashboard Page.**_
-- _**TODO: Need to add another row so we can display the tabs to toggle between "Home" and "Stats".**_
 - Remembered that the Dashboard page should also have two column layout.
 - Decided to create a simple Tab Bar component called `AceItTabBar` instead of using KendoReact's TabStrip component.
 - Added theRadar/Spider chart to the Stats View section.

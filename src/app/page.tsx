@@ -54,7 +54,9 @@ import {
   sem3Appraisal,
   sem1PMProfile,
   sem2PMProfile,
-  sem3PMProfile
+  sem3PMProfile,
+  sem1Feedbacks,
+  sem2Feedbacks
 } from '@/shared/data/sample-aceit-data';
 
 import { Grid, GridColumn as Column } from "@progress/kendo-react-grid";
@@ -117,6 +119,15 @@ interface SemPMProfileInterface {
   max: number;
 }
 
+interface SemFeedbackInterface {
+  id: number,
+  feedbackContent: string,
+  module: string,
+  category: string,
+  lecturer: string,
+  dateGiven: string,
+}
+
 export default function Dashboard() {
   const [activeAssignmentPanel, setActiveAssignmentPanel] = useState<string>("asn16253");
   const [activeTab, setActiveTab] = useState<string>("Home");
@@ -134,6 +145,7 @@ export default function Dashboard() {
   });
   const [currSemAppraisal, setCurrSemAppraisal] = useState<SemAppraisalInterface[]>(sem1Appraisal);
   const [currSemPMProfile, setCurrSemPMProfile] = useState<SemPMProfileInterface[]>(sem1PMProfile);
+  const [currSemFeedback, setCurrSemFeedback] = useState<SemFeedbackInterface[]>(sem1Feedbacks);
   const refreshAppraisal = true;
   const refreshPMProfile = true;
 
@@ -221,6 +233,19 @@ export default function Dashboard() {
       </ListViewItemWrapper>
     );
   };
+
+  /**
+   * @todo I need to add in the inner layout for each feedback list item. 
+   */
+  const feedbackRender = (props: ListViewItemProps) => {
+    const item = props.dataItem;
+
+    return (
+      <ListViewItemWrapper className="p-[5px] h-[60px]" style={{ borderBottom: '1px solid lightgrey' }}>
+
+      </ListViewItemWrapper>
+    );
+  }
 
   function chartDrillDown() {
     setIsShowRightPanel(!isShowRightPanel);
@@ -591,12 +616,16 @@ export default function Dashboard() {
                   onChange={
                     (event: DropDownListChangeEvent) => {
                       setSelectedSem({value: event.target.value});
-                      if (parseInt(event.target.value.id) == 1)
+                      if (parseInt(event.target.value.id) == 1){
                         setCurrSemAppraisal(sem1Appraisal);
-                      else if (parseInt(event.target.value.id) == 2)
+                        setCurrSemFeedback(sem1Feedbacks);
+                      } else if (parseInt(event.target.value.id) == 2) {
                         setCurrSemAppraisal(sem2Appraisal);
-                      else if (parseInt(event.target.value.id) == 3)
+                        setCurrSemFeedback(sem2Feedbacks);
+                      } else if (parseInt(event.target.value.id) == 3) {
                         setCurrSemAppraisal(sem3Appraisal);
+                        setCurrSemFeedback(sem2Feedbacks);
+                      }
                     }
                   }
                   style={{ width: 300 }}
@@ -693,6 +722,16 @@ export default function Dashboard() {
                   <ChartCategoryAxisItem labels={{ rotation: "auto" }} />
                 </ChartCategoryAxis>
               </Chart>
+
+              <div className="h-8 w-full" />
+              
+              <div className="flex justify-start items-center w-full section-header-wrapper">
+                <h2 className="section-header">Your Top Feedbacks (by Semester):</h2>
+              </div>
+
+              {/* Current Semester Feedbacks Section starts here. */}
+                <ListView data={currSemFeedback} item={feedbackRender} style={{ width: '100%' }} />
+              {/* Current Semester Feedbacks Section ends here. */}
             </div>
           }
         </div>

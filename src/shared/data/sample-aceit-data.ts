@@ -416,27 +416,27 @@ export const semesters = [
 
 export const sem1PMProfile = [
   {
-    name: 'Communication',
+    name: 'Collaboration',
     min: 5.6,
     max: 7.7
   },
   {
-    name: 'Contribution',
+    name: 'Problem-solving',
     min: 6.1,
     max: 7.8
   },
   {
-    name: 'Problem-Solving',
+    name: 'Critical Thinking',
     min: 7.1,
     max: 8.4
   },
   {
-    name: 'Teamwork',
+    name: 'Time Management',
     min: 7.6,
     max: 8.6
   },
   {
-    name: 'Professionalism',
+    name: 'Presentation Skills',
     min: 6.1,
     max: 7.3
   },
@@ -444,27 +444,27 @@ export const sem1PMProfile = [
 
 export const sem2PMProfile = [
   {
-    name: 'Communication',
+    name: 'Collaboration',
     min: 6.4,
     max: 7.3
   },
   {
-    name: 'Contribution',
+    name: 'Problem-solving',
     min: 6.8,
     max: 8.1
   },
   {
-    name: 'Problem-Solving',
+    name: 'Critical Thinking',
     min: 7.0,
     max: 8.6
   },
   {
-    name: 'Teamwork',
+    name: 'Time Management',
     min: 6.9,
     max: 8.1
   },
   {
-    name: 'Professionalism',
+    name: 'Presentation Skills',
     min: 7.1,
     max: 7.9
   },
@@ -472,28 +472,82 @@ export const sem2PMProfile = [
 
 export const sem3PMProfile = [
   {
-    name: 'Communication',
+    name: 'Collaboration',
     min: 6.1,
     max: 7.3
   },
   {
-    name: 'Contribution',
+    name: 'Problem-solving',
     min: 6.8,
     max: 7.9
   },
   {
-    name: 'Problem-Solving',
+    name: 'Critical Thinking',
     min: 6.7,
     max: 8.5
   },
   {
-    name: 'Teamwork',
+    name: 'Time Management',
     min: 6.5,
     max: 7.5
   },
   {
-    name: 'Professionalism',
+    name: 'Presentation Skills',
     min: 6.5,
     max: 7.6
   },
+];
+
+export const sem1Feedbacks = [
+  {
+    id: 3,
+    feedbackContent: "This is a sample feedback by a lecturer about how the student has performed under a particular category of the project management. We want this text to be longer to see if the spacing and dimension is good enough.",
+    module: "DX1625",
+    category: "Collaboration",
+    lecturer: "Yanling Goh",
+    dateGiven: new Date("2023-05-17").toLocaleDateString("en-SG"),
+  },
+  {
+    id: 2,
+    feedbackContent: "This is a sample feedback by a lecturer about how the student has performed under a particular category of the project management. We want this text to be longer to see if the spacing and dimension is good enough.",
+    module: "DX8173",
+    category: "Problem-solving",
+    lecturer: "Jimmy Yeo",
+    dateGiven: new Date("2023-05-17").toLocaleDateString("en-SG"),
+  },
+  {
+    id: 1,
+    feedbackContent: "This is a sample feedback by a lecturer about how the student has performed under a particular category of the project management. We want this text to be longer to see if the spacing and dimension is good enough.",
+    module: "DX3227",
+    category: "Time Management",
+    lecturer: "Terence Lok",
+    dateGiven: new Date("2023-05-15").toLocaleDateString("en-SG"),
+  }
+];
+
+export const sem2Feedbacks = [
+  {
+    id: 6,
+    feedbackContent: "This is a sample feedback by a lecturer about how the student has performed under a particular category of the project management. We want this text to be longer to see if the spacing and dimension is good enough.",
+    module: "DX10237",
+    category: "Collaboration",
+    lecturer: "Lawrence Neo",
+    dateGiven: new Date("2023-11-09").toLocaleDateString("en-SG"),
+  },
+  {
+    id: 5,
+    feedbackContent: "This is a sample feedback by a lecturer about how the student has performed under a particular category of the project management. We want this text to be longer to see if the spacing and dimension is good enough.",
+    module: "DX1127",
+    category: "Problem-solving",
+    lecturer: "Jimmy Yeo",
+    dateGiven: new Date("2023-11-08").toLocaleDateString("en-SG"),
+  },
+  {
+    id: 4,
+    feedbackContent: "This is a sample feedback by a lecturer about how the student has performed under a particular category of the project management. We want this text to be longer to see if the spacing and dimension is good enough.",
+    module: "DX8172",
+    category: "Time Management",
+    lecturer: "Terence Lok",
+    dateGiven: new Date("2023-11-04").toLocaleDateString("en-SG"),
+  }
 ];
