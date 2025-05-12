@@ -504,7 +504,8 @@ export const sem1Feedbacks = [
     feedbackContent: "This is a sample feedback by a lecturer about how the student has performed under a particular category of the project management. We want this text to be longer to see if the spacing and dimension is good enough.",
     module: "DX1625",
     category: "Collaboration",
-    lecturer: "Yanling Goh",
+    profilePic: "/female-lecturer-profile-image-01.jpg",
+    lecturer: "Mandy Mok",
     dateGiven: new Date("2023-05-17").toLocaleDateString("en-SG"),
   },
   {
@@ -512,7 +513,8 @@ export const sem1Feedbacks = [
     feedbackContent: "This is a sample feedback by a lecturer about how the student has performed under a particular category of the project management. We want this text to be longer to see if the spacing and dimension is good enough.",
     module: "DX8173",
     category: "Problem-solving",
-    lecturer: "Jimmy Yeo",
+    profilePic: "/male-lecturer-profile-image-01.jpg",
+    lecturer: "Jimmy Yuen",
     dateGiven: new Date("2023-05-17").toLocaleDateString("en-SG"),
   },
   {
@@ -520,7 +522,8 @@ export const sem1Feedbacks = [
     feedbackContent: "This is a sample feedback by a lecturer about how the student has performed under a particular category of the project management. We want this text to be longer to see if the spacing and dimension is good enough.",
     module: "DX3227",
     category: "Time Management",
-    lecturer: "Terence Lok",
+    profilePic: "/male-lecturer-profile-image-02.jpg",
+    lecturer: "Tee Soon Lok",
     dateGiven: new Date("2023-05-15").toLocaleDateString("en-SG"),
   }
 ];
@@ -531,7 +534,8 @@ export const sem2Feedbacks = [
     feedbackContent: "This is a sample feedback by a lecturer about how the student has performed under a particular category of the project management. We want this text to be longer to see if the spacing and dimension is good enough.",
     module: "DX10237",
     category: "Collaboration",
-    lecturer: "Lawrence Neo",
+    profilePic: "/male-lecturer-profile-image-02.jpg",
+    lecturer: "Tee Soon Lok",
     dateGiven: new Date("2023-11-09").toLocaleDateString("en-SG"),
   },
   {
@@ -539,7 +543,8 @@ export const sem2Feedbacks = [
     feedbackContent: "This is a sample feedback by a lecturer about how the student has performed under a particular category of the project management. We want this text to be longer to see if the spacing and dimension is good enough.",
     module: "DX1127",
     category: "Problem-solving",
-    lecturer: "Jimmy Yeo",
+    profilePic: "/male-lecturer-profile-image-01.jpg",
+    lecturer: "Jimmy Yuen",
     dateGiven: new Date("2023-11-08").toLocaleDateString("en-SG"),
   },
   {
@@ -547,7 +552,38 @@ export const sem2Feedbacks = [
     feedbackContent: "This is a sample feedback by a lecturer about how the student has performed under a particular category of the project management. We want this text to be longer to see if the spacing and dimension is good enough.",
     module: "DX8172",
     category: "Time Management",
-    lecturer: "Terence Lok",
-    dateGiven: new Date("2023-11-04").toLocaleDateString("en-SG"),
+    profilePic: "/female-lecturer-profile-image-01.jpg",
+    lecturer: "Mandy Mok",
+    dateGiven: new Date("2024-05-04").toLocaleDateString("en-SG"),
+  }
+];
+
+export const sem3Feedbacks = [
+  {
+    id: 6,
+    feedbackContent: "This is a sample feedback by a lecturer about how the student has performed under a particular category of the project management. We want this text to be longer to see if the spacing and dimension is good enough.",
+    module: "DX10237",
+    category: "Collaboration",
+    profilePic: "/male-lecturer-profile-image-02.jpg",
+    lecturer: "Tee Soon Lok",
+    dateGiven: new Date("2024-05-09").toLocaleDateString("en-SG"),
+  },
+  {
+    id: 5,
+    feedbackContent: "This is a sample feedback by a lecturer about how the student has performed under a particular category of the project management. We want this text to be longer to see if the spacing and dimension is good enough.",
+    module: "DX1127",
+    category: "Problem-solving",
+    profilePic: "/female-lecturer-profile-image-01.jpg",
+    lecturer: "Mandy Mok",
+    dateGiven: new Date("2024-05-08").toLocaleDateString("en-SG"),
+  },
+  {
+    id: 4,
+    feedbackContent: "This is a sample feedback by a lecturer about how the student has performed under a particular category of the project management. We want this text to be longer to see if the spacing and dimension is good enough.",
+    module: "DX8172",
+    category: "Time Management",
+    profilePic: "/male-lecturer-profile-image-01.jpg",
+    lecturer: "Jimmy Yuen",
+    dateGiven: new Date("2024-05-04").toLocaleDateString("en-SG"),
   }
 ];

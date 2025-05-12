@@ -56,7 +56,8 @@ import {
   sem2PMProfile,
   sem3PMProfile,
   sem1Feedbacks,
-  sem2Feedbacks
+  sem2Feedbacks,
+  sem3Feedbacks
 } from '@/shared/data/sample-aceit-data';
 
 import { Grid, GridColumn as Column } from "@progress/kendo-react-grid";
@@ -237,12 +238,27 @@ export default function Dashboard() {
   /**
    * @todo I need to add in the inner layout for each feedback list item. 
    */
-  const feedbackRender = (/*props: ListViewItemProps*/) => {
-    // const item = props.dataItem;
+  const feedbackRender = (props: ListViewItemProps) => {
+    const item = props.dataItem;
 
     return (
-      <ListViewItemWrapper className="p-[5px] h-[60px]" style={{ borderBottom: '1px solid lightgrey' }}>
-
+      <ListViewItemWrapper className="p-[5px] h-max" style={{ borderBottom: '1px solid lightgrey' }}>
+        <div className="flex flex-row w-full h-full">
+          <div className="flex w-16 items-start justify-center p-2">
+            <Image src={item.profilePic} alt={item.lecturer} width={48} height={48} className="rounded-full" />
+          </div>
+          <div className="flex-1 items-start justify-center">
+            <div className="flex flex-row w-full h-max">
+              <strong>{item.lecturer} | {item.module} | {item.category}</strong>
+            </div>
+            <div className="flex flex-row w-full h-max">
+              {item.feedbackContent}
+            </div>
+            <div className="flex flex-row justify-end w-full h-max text-gray-500">
+              {item.dateGiven}
+            </div>
+          </div>
+        </div>
       </ListViewItemWrapper>
     );
   }
@@ -483,6 +499,9 @@ export default function Dashboard() {
               setSelectedSem({
                 value: { text: "Semester 1", id: 1 }
               });
+              setCurrSemPMProfile(sem1PMProfile);
+              setCurrSemAppraisal(sem1Appraisal);
+              setCurrSemFeedback(sem1Feedbacks);
             }}
           >
             <X width={48} height={48} />
@@ -680,12 +699,16 @@ export default function Dashboard() {
                   onChange={
                     (event: DropDownListChangeEvent) => {
                       setSelectedSem({value: event.target.value});
-                      if (parseInt(event.target.value.id) == 1)
+                      if (parseInt(event.target.value.id) == 1) {
                         setCurrSemPMProfile(sem1PMProfile);
-                      else if (parseInt(event.target.value.id) == 2)
+                        setCurrSemFeedback(sem1Feedbacks);
+                      } else if (parseInt(event.target.value.id) == 2) {
                         setCurrSemPMProfile(sem2PMProfile);
-                      else if (parseInt(event.target.value.id) == 3)
+                        setCurrSemFeedback(sem2Feedbacks);
+                      } else if (parseInt(event.target.value.id) == 3) {
                         setCurrSemPMProfile(sem3PMProfile);
+                        setCurrSemFeedback(sem3Feedbacks);
+                      }
                     }
                   }
                   style={{ width: 300 }}

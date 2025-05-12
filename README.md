@@ -319,6 +319,14 @@ _(Potential Pages + Logical Work Units)_
 - I also want to figure out how to customize the dates in Week View mode to just `"dd/MM"`, and remove the short day of the week (e.g. "Mon", "Tue", etc). 
 - Finish adding the current semester feedback list and it's items.
 
+### 12th May, Mon: Completed the Summary Drill-Down (Right Panel)
+
+- Gemini Pro seems to have issues with copying-and-pasting text and code these last two days.
+- I stopped work, nearly lost the momentum.
+- Decided to continue work without collaboration with Gemini Pro.
+- Managed to complete the UI prototyping for the PM profile Feedbacks section.
+- Finally have a much better and clearer understanding of the basic `FlexBox` related tailwind classes.
+
 ### 7th May, Wed: Stats View > Summary Drill-Down (Right Panel)
 
 - Added the relevant charts and grids for each Key Stats.
