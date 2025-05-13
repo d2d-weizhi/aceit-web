@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import SideDrawer from "@/shared/components/sidedrawer";
+// import SideDrawer from "@/shared/components/sidedrawer";
 
 export default function Tasks() {
 	const [isShowRightPanel, setIsShowRightPanel] = useState(false);
@@ -15,8 +15,7 @@ export default function Tasks() {
 						transitionDelay: isShowRightPanel ? '0ms' : '250ms' // Delay for hiding
 					}}
 				> 
-					{/* Side Drawer inside the left panel */}
-					<SideDrawer /> 
+					
 	
 					<button type="button" onClick={() => setIsShowRightPanel(!isShowRightPanel)}>
 						Show Right Panel

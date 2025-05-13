@@ -29,6 +29,20 @@ h2 {
   letter-spacing: 1px;
 }
 
+.menu-button { 
+  /* ... other styles ... */
+  transition-delay: 0.5s;
+  transition: opacity 0.75s ease-in; /* Adjust duration and easing as needed */
+}
+
+.fade-out {
+  opacity: 0; 
+}
+
+.fade-in {
+  opacity: 1;
+}
+
 .aceit-tab {
   @apply px-6 py-4 min-w-[90px] h-full;
   font-size: 1.25rem;

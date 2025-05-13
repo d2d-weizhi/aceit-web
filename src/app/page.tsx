@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { BellPlus, Bell, Check, X } from "lucide-react";
+import { BellPlus, Bell, Check, Menu, X } from "lucide-react";
 import SideDrawer from "@/shared/components/sidedrawer";
 import { AceItTabBar } from "@/shared/components/aceit-tabbar";
 
@@ -130,6 +130,7 @@ interface SemFeedbackInterface {
 }
 
 export default function Dashboard() {
+  const [isShowMenu, setIsShowMenu] = useState<boolean>(false);
   const [activeAssignmentPanel, setActiveAssignmentPanel] = useState<string>("asn16253");
   const [activeTab, setActiveTab] = useState<string>("Home");
 
@@ -285,9 +286,26 @@ export default function Dashboard() {
 					transitionDelay: isShowRightPanel ? '0ms' : '250ms' // Delay for hiding
 				}}
 			> 
-        <div className="flex flex-row items-center p-2 h-max">
+        <div className="flex flex-row items-center p-2 h-max z-50">
           <div className="flex-1 flex-col">
-            <SideDrawer />
+            <button
+              type="button"
+              onClick={() => {
+                setIsShowMenu(!isShowMenu);
+              }}
+              className="fixed top-0 left-0 p-4 z-50"
+            >
+              {isShowMenu ? (
+                <X width={64} height={64} strokeWidth={1.5} color={"#FEFEFE"}
+                  className={`menu-button ${ isShowMenu ? 'fade-in' : 'fade-out' }`}
+                />
+              ) : (
+                <Menu width={64} height={64} strokeWidth={1.5} color={"#141414"}
+                  className={`menu-button ${ isShowMenu ? 'fade-out' : 'fade-in' }`}
+                />
+              )}
+            </button>
+            <SideDrawer isShow={isShowMenu} />
           </div>
           <div className="flex w-auto p-2">
             <Image src="/green-monster.png" alt={"Sample Profile Image"} width={48} height={48} className="rounded-full" />
@@ -295,7 +313,7 @@ export default function Dashboard() {
         </div>
 
         {/* Our Outer Row Layout */}
-        <div className="flex flex-row-1 justify-center items-start w-full">
+        <div className="flex flex-row-1 justify-center items-start w-full z-10">
           {/* Where our entire AceItTab Component begins */}
           <div className="flex flex-col w-full h-full mx-[5%]">
             {/* AceItTabStrip - Start Simple */}

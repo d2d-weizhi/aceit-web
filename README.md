@@ -319,6 +319,14 @@ _(Potential Pages + Logical Work Units)_
 - I also want to figure out how to customize the dates in Week View mode to just `"dd/MM"`, and remove the short day of the week (e.g. "Mon", "Tue", etc). 
 - Finish adding the current semester feedback list and it's items.
 
+### 13th May, Tue: SideDrawer Updated + Started on Assignment Page
+
+- Extracted the menu and close button from SideDrawer component and placed them within the top bar. of individual pages.
+- Adjusted the z-index values for the relevant DOM elements so the SideDrawer remains on top after sliding out.
+- Added subtle animations to the SVG icons so it feels smoother than just switching between the two.
+- Copied the top bar over to the Assignments Page (Left Panel).
+- Work begins on the Assignments page.
+
 ### 12th May, Mon: Completed the Summary Drill-Down (Right Panel)
 
 - Gemini Pro seems to have issues with copying-and-pasting text and code these last two days.
