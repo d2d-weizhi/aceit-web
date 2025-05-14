@@ -175,7 +175,7 @@ export default function Assignments() {
 						</div>
           )}
 
-          <div className="h-8 w-full" />
+          <div className="flex h-8 w-full" />
 
           <div
             className="flex flex-row items-center w-full section-header-wrapper"
@@ -204,7 +204,7 @@ export default function Assignments() {
             </div>
           )}
 
-          <div className="h-8 w-full" />
+          <div className="flex h-8 w-full" />
 
           <div className="flex flex-row items-center w-full section-header-wrapper">
             <div
