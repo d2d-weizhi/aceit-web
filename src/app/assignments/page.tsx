@@ -195,11 +195,11 @@ export default function Assignments() {
             <div 
               className="flex items-center w-full mb-16"
               style={{
-                height: (assignmentsData.filter(a => a.status === "submitted").length * 100) + 2
+                height: (assignmentsData.filter(a => a.status === "submitted").length * 110) + 2
               }}
             >
               {/* Submitted Assignments Section starts here. */}
-							<ListView data={assignmentsData.filter(a => a.status === "submitted")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "submitted").length * 100) + 2 }} />
+							<ListView data={assignmentsData.filter(a => a.status === "submitted")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "submitted").length * 110) + 2 }} />
 							{/* Submitted Assignments Section ends here. */}
             </div>
           )}
