@@ -170,7 +170,7 @@ export default function Assignments() {
           {isOngoingExpanded && (
             <div className={`flex items-center w-full h-max mb-16`}>	
 							{/* Ongoing Assignments Section starts here. */}
-							<ListView data={assignmentsData.filter(a => a.status === "ongoing")} item={assignmentsRender} style={{ width: '100%', height: assignmentsData.filter(a => a.status === "ongoing").length * 110 }} />
+							<ListView data={assignmentsData.filter(a => a.status === "ongoing")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "ongoing").length * 110) + 2 }} />
 							{/* Ongoing Assignments Section ends here. */}
 						</div>
           )}
@@ -194,7 +194,7 @@ export default function Assignments() {
           {isSubmittedExpanded && (
             <div className={`flex items-center w-full mb-16`}>
               {/* Submitted Assignments Section starts here. */}
-							<ListView data={assignmentsData.filter(a => a.status === "submitted")} item={assignmentsRender} style={{ width: '100%', height: assignmentsData.filter(a => a.status === "submitted").length * 100 }} />
+							<ListView data={assignmentsData.filter(a => a.status === "submitted")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "submitted").length * 100) + 2 }} />
 							{/* Submitted Assignments Section ends here. */}
             </div>
           )}
@@ -218,7 +218,7 @@ export default function Assignments() {
           {isCompletedExpanded && (
             <div className={`flex items-center w-full h-max mb-36`}>	
               {/* Submitted Assignments Section starts here. */}
-							<ListView data={assignmentsData.filter(a => a.status === "completed")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "completed").length * 100) + 8 }} />
+							<ListView data={assignmentsData.filter(a => a.status === "completed")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "completed").length * 100) + 10 }} />
 							{/* Submitted Assignments Section ends here. */}
             </div>
           )}
