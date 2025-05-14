@@ -168,9 +168,7 @@ export default function Assignments() {
           </div>
 
           {isOngoingExpanded && (
-            <div className="flex items-center w-full h-max mb-16 overflow-hidden transition-max-h duration-300 ease-in-out"
-		style={{ maxHeight: isOngoingExpanded ? assignmentsData.filter(a => a.status === "ongoing").length * 110 : '0' }}	
-						>	
+            <div className={`flex items-center w-full ${isOngoingExpanded ? 'h-max' : 'h-[0px]'} mb-16 overflow-hidden transition-max-h duration-300 ease-in-out`}>	
 							{/* Ongoing Assignments Section starts here. */}
 							<ListView data={assignmentsData.filter(a => a.status === "ongoing")} item={assignmentsRender} style={{ width: '100%', height: assignmentsData.filter(a => a.status === "ongoing").length * 110 }} />
 							{/* Ongoing Assignments Section ends here. */}
@@ -194,10 +192,7 @@ export default function Assignments() {
           </div>
 
           {isSubmittedExpanded && (
-            <div className="flex items-center w-full h-max mb-16 overflow-hidden transition-max-h duration-300 ease-in-out"
-		style={{ maxHeight: isSubmittedExpanded 
-			? assignmentsData.filter(a => a.status === "submitted").length * 110 : '0' }}	
-						>
+            <div className={`flex items-center w-full ${isSubmittedExpanded ? 'h-max' : 'h-[0px]'} mb-16 overflow-hidden transition-max-h duration-300 ease-in-out`}>
               {/* Submitted Assignments Section starts here. */}
 							<ListView data={assignmentsData.filter(a => a.status === "submitted")} item={assignmentsRender} style={{ width: '100%', height: assignmentsData.filter(a => a.status === "submitted").length * 100 }} />
 							{/* Submitted Assignments Section ends here. */}
@@ -221,8 +216,7 @@ export default function Assignments() {
           </div>
 
           {isCompletedExpanded && (
-            <div className="flex items-center w-full h-max mb-32 overflow-hidden transition-max-h duration-300 ease-in-out"
-		style={{ maxHeight: isCompletedExpanded ? (assignmentsData.filter(a => a.status === "completed").length * 110) + 8 : '0' }}>	
+            <div className={`flex items-center w-full ${isCompletedExpanded ? 'h-max' : 'h-[0px]'} mb-16 overflow-hidden transition-max-h duration-300 ease-in-out`}>	
               {/* Submitted Assignments Section starts here. */}
 							<ListView data={assignmentsData.filter(a => a.status === "completed")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "completed").length * 100) + 8 }} />
 							{/* Submitted Assignments Section ends here. */}
