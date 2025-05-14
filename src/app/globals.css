@@ -65,6 +65,7 @@ h2 {
 .section-header-wrapper {
   border-bottom: 1px solid rgba(21, 21, 21, .5); /* Thin light gray line */
   margin-bottom: 1rem; /* Add some bottom margin */
+  vertical-align: middle;
 }
 
 .section-header {
@@ -76,8 +77,9 @@ h2 {
   width: 100%;
   letter-spacing: 0.05em; /* Add a touch of letter spacing */
   color: #333; /* Adjust color as needed */
-  margin-left: 8px;
-  margin-right: 8px;
+  margin-top: 0.25rem;
+  margin-left: 4px;
+  margin-right: 4px;
   padding-bottom: 0.25rem; /* Add padding for the line */
 }
 

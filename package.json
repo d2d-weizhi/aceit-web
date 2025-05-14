@@ -16,6 +16,7 @@
     "@progress/kendo-react-grid": "^10.2.0",
     "@progress/kendo-react-layout": "^10.2.0",
     "@progress/kendo-react-listview": "^10.2.0",
+    "@progress/kendo-react-progressbars": "^10.2.0",
     "@progress/kendo-theme-material": "^10.6.0",
     "lucide-react": "^0.503.0",
     "luxon": "^3.6.1",

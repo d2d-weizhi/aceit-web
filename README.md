@@ -319,6 +319,22 @@ _(Potential Pages + Logical Work Units)_
 - I also want to figure out how to customize the dates in Week View mode to just `"dd/MM"`, and remove the short day of the week (e.g. "Mon", "Tue", etc). 
 - Finish adding the current semester feedback list and it's items.
 
+### 14th May, Wed: UI Prototyping for Assignments Listing view (Completed)
+
+- Just finished the UI prototyping for the Assignments Listing view.
+- Today, I did most of it without using Gemini Pro.
+- Gemini Pro did help with the CSS Animations.
+- Need to trust my own instincts and insights more.
+- Used the `status` field from the sample data to filter.
+- Only needed one `assignmentsRender()` function
+- Styling inside each item can be refined later.
+- Still need to add CSS Animation for the "collapsing/expanding" effect for each panel.
+
+**(Next Steps)**
+
+- Start creating the Details view.
+- Add navigation for simulating the user flow.
+
 ### 13th May, Tue: SideDrawer Updated + Started on Assignment Page
 
 - Extracted the menu and close button from SideDrawer component and placed them within the top bar. of individual pages.
