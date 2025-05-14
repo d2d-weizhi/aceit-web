@@ -216,7 +216,7 @@ export default function Assignments() {
           </div>
 
           {isCompletedExpanded && (
-            <div className={`flex items-center w-full h-max mb-16`}>	
+            <div className={`flex items-center w-full h-max mb-36`}>	
               {/* Submitted Assignments Section starts here. */}
 							<ListView data={assignmentsData.filter(a => a.status === "completed")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "completed").length * 100) + 8 }} />
 							{/* Submitted Assignments Section ends here. */}
