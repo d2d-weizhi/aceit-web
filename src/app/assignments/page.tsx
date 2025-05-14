@@ -167,15 +167,13 @@ export default function Assignments() {
             </div>
           </div>
 
-          {isOngoingExpanded && (
+          {isOngoingExpanded ? (
             <div className={`flex items-center w-full h-max mb-16`}>	
 							{/* Ongoing Assignments Section starts here. */}
 							<ListView data={assignmentsData.filter(a => a.status === "ongoing")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "ongoing").length * 110) + 2 }} />
 							{/* Ongoing Assignments Section ends here. */}
 						</div>
-          )}
-
-          <div className="flex h-8 w-full" />
+          ) : (<div className="flex h-16 w-full" />)}
 
           <div
             className="flex flex-row items-center w-full section-header-wrapper"
@@ -191,7 +189,7 @@ export default function Assignments() {
             </div>
           </div>
 
-          {isSubmittedExpanded && (
+          {isSubmittedExpanded ? (
             <div 
               className="flex items-center w-full mb-16"
               style={{
@@ -202,9 +200,7 @@ export default function Assignments() {
 							<ListView data={assignmentsData.filter(a => a.status === "submitted")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "submitted").length * 110) + 2 }} />
 							{/* Submitted Assignments Section ends here. */}
             </div>
-          )}
-
-          <div className="flex h-8 w-full" />
+          ) : (<div className="flex h-16 w-full" />)}
 
           <div className="flex flex-row items-center w-full section-header-wrapper">
             <div
@@ -220,7 +216,7 @@ export default function Assignments() {
             </div>
           </div>
 
-          {isCompletedExpanded && (
+          {isCompletedExpanded ? (
             <div 
               className="flex items-center w-full mb-36"
               style={{
@@ -231,7 +227,7 @@ export default function Assignments() {
 							<ListView data={assignmentsData.filter(a => a.status === "completed")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "completed").length * 100) + 10 }} />
 							{/* Completed Assignments Section ends here. */}
             </div>
-          )}
+          ) : (<div className="flex h-16 w-full" />)}
         </div>
         {/* Left Panel content ends here. */}
       </div>
