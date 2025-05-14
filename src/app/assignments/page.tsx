@@ -192,7 +192,12 @@ export default function Assignments() {
           </div>
 
           {isSubmittedExpanded && (
-            <div className={`flex items-center w-full mb-16`}>
+            <div 
+              className="flex items-center w-full mb-16"
+              style={{
+                height: (assignmentsData.filter(a => a.status === "submitted").length * 100) + 2
+              }}
+            >
               {/* Submitted Assignments Section starts here. */}
 							<ListView data={assignmentsData.filter(a => a.status === "submitted")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "submitted").length * 100) + 2 }} />
 							{/* Submitted Assignments Section ends here. */}
@@ -216,10 +221,15 @@ export default function Assignments() {
           </div>
 
           {isCompletedExpanded && (
-            <div className={`flex items-center w-full h-max mb-36`}>	
-              {/* Submitted Assignments Section starts here. */}
+            <div 
+              className="flex items-center w-full mb-36"
+              style={{
+                height: (assignmentsData.filter(a => a.status === "completed").length * 100) + 10
+              }}
+            >	
+              {/* Completed Assignments Section starts here. */}
 							<ListView data={assignmentsData.filter(a => a.status === "completed")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "completed").length * 100) + 10 }} />
-							{/* Submitted Assignments Section ends here. */}
+							{/* Completed Assignments Section ends here. */}
             </div>
           )}
         </div>
