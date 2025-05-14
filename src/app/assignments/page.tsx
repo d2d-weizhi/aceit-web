@@ -168,7 +168,9 @@ export default function Assignments() {
           </div>
 
           {isOngoingExpanded && (
-            <div className="flex items-center w-full h-max mb-16">	
+            <div className="flex items-center w-full h-max mb-16 overflow-hidden transition-max-h duration-300 ease-in-out"
+							style={{ maxHeight: isOngoingExpanded ? {`${assignmentsData.filter(a => a.status === "ongoing").length * 110}px`} : '0' }}	
+						>	
 							{/* Ongoing Assignments Section starts here. */}
 							<ListView data={assignmentsData.filter(a => a.status === "ongoing")} item={assignmentsRender} style={{ width: '100%', height: assignmentsData.filter(a => a.status === "ongoing").length * 110 }} />
 							{/* Ongoing Assignments Section ends here. */}
@@ -192,7 +194,9 @@ export default function Assignments() {
           </div>
 
           {isSubmittedExpanded && (
-            <div className="flex items-center w-full h-max mb-16">
+            <div className="flex items-center w-full h-max mb-16 overflow-hidden transition-max-h duration-300 ease-in-out"
+							style={{ maxHeight: isSubmittedExpanded ? {`${assignmentsData.filter(a => a.status === "submitted").length * 110}px`} : '0' }}	
+						>
               {/* Submitted Assignments Section starts here. */}
 							<ListView data={assignmentsData.filter(a => a.status === "submitted")} item={assignmentsRender} style={{ width: '100%', height: assignmentsData.filter(a => a.status === "submitted").length * 100 }} />
 							{/* Submitted Assignments Section ends here. */}
@@ -216,7 +220,9 @@ export default function Assignments() {
           </div>
 
           {isCompletedExpanded && (
-            <div className="flex items-center w-full h-max mb-32">
+            <div className="flex items-center w-full h-max mb-32 overflow-hidden transition-max-h duration-300 ease-in-out"
+							style={{ maxHeight: isCompletedExpanded ? {`${assignmentsData.filter(a => a.status === "completed").length * 110}px`} : '0' }}	
+						>	
               {/* Submitted Assignments Section starts here. */}
 							<ListView data={assignmentsData.filter(a => a.status === "completed")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "completed").length * 100) + 8 }} />
 							{/* Submitted Assignments Section ends here. */}
