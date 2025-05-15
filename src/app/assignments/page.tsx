@@ -336,7 +336,7 @@ export default function Assignments() {
                   onClick={() => setIsShowRightPanel(!isShowRightPanel)}
                 >
                   <div className="flex text-2xl w-full items-center">
-                    Lecturer's Feedbacks&nbsp;<MessageCircleReply className="ml-2" width={20} height={20} color={"#efefef"} />
+                    Lecturer&apos;s Feedbacks&nbsp;<MessageCircleReply className="ml-2" width={20} height={20} color={"#efefef"} />
                   </div>
                 </Button>
 
