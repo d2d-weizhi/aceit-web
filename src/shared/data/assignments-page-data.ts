@@ -155,3 +155,35 @@ export const assignmentsData = [
     ]
   }
 ];
+
+export const assignmentDetails = {
+  id: "11726",
+  assignmentTitle: "Create a UX Prototype",
+  dueDate: new Date("2025/05/18").toLocaleDateString("en-SG"),
+  description: "<p>We will generate a simple description here. But it can store&nbsp;<strong>rich text</strong>&nbsp;also.</p><p><ul><li>List Item 1</li><li>List Item 2</li><li>List Item 3</li></ul></p>",
+  module: "DX8172",
+  progressPercent: 0.88,
+  isGroup: true,
+  status: "ongoing",
+  teamMembers: [
+    {
+      id: "172638C",
+      studentName: "Agnes Yeo Ting Ting",
+      profileImg: "/female-student-chinese.jpg"
+    },
+    {
+      id: "172123B",
+      studentName: "Michael Chan Chu Leng",
+      profileImg: "/male-student-chinese.jpg"
+    },
+    {
+      id: "273653F",
+      studentName: "Avathi Kumar",
+      profileImg: "/female-student-indian.jpg"
+    },
+  ],
+  tags: [
+    { id: "1", tagTitle: "UX" },
+    { id: "2", tagTitle: "Figma" }
+  ]
+};

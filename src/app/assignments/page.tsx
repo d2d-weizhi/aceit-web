@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { Menu, X, ChevronRight, ArrowLeft, UserPlus, UserMinus, MessagesSquare, MessageCircleReply } from "lucide-react";
 import SideDrawer from "@/shared/components/sidedrawer";
 
 import {
@@ -11,12 +11,17 @@ import {
   ListViewItemWrapper,
 } from "@progress/kendo-react-listview";
 import { ProgressBar } from '@progress/kendo-react-progressbars';
-import { ChipList, Chip, ChipProps } from '@progress/kendo-react-buttons';
+import { ChipList, Chip, ChipProps, Button } from '@progress/kendo-react-buttons';
+
+import DOMPurify from 'dompurify';
 
 import { assignmentsData } from "@/shared/data/assignments-page-data";
+import { assignmentDetails } from "@/shared/data/assignments-page-data";
 
 export default function Assignments() {
   const [isShowMenu, setIsShowMenu] = useState<boolean>(false);
+
+  const [isShowDetails, setIsShowDetails] = useState<boolean>(false);
 
   // We will make sure that all the sections are "Expanded" by default.
   const [isOngoingExpanded, setIsOngoingExpanded] = useState<boolean>(true);
@@ -33,7 +38,10 @@ export default function Assignments() {
         className="p-8 h-[100px]"
         style={{ borderBottom: "1px solid lightgrey" }}
       >
-        <div className="flex flex-row w-full h-[80px] mt-[10px] mb-[10px]">
+        <div 
+          className="flex flex-row w-full h-[80px] mt-[10px] mb-[10px]"
+          onClick={() => setIsShowDetails(true)}
+        >
           <div className="flex flex-col items-center justify-start w-[68%] h-full">
             <div className="flex-1 text-2xl font-bold w-full items-center">
               {item.assignmentTitle}
@@ -90,6 +98,31 @@ export default function Assignments() {
       </ListViewItemWrapper>
     );
 	};
+
+  const teamMembersRender = (props: ListViewItemProps) => {
+    const item = props.dataItem;
+	
+		return (
+      <ListViewItemWrapper
+        className="p-2 h-[64px]"
+        style={{ borderBottom: "1px solid lightgrey" }}
+      >
+        <div className="flex w-full h-full items-center">
+          <div className="flex w-[64px] justify-center items-center aspect-square">
+            <Image alt={item.studentName} src={item.profileImg} width={48} height={48} className="rounded-full" />
+          </div>
+          <div className="flex-1 items-center justify-start pl-4 text-xl">
+            {item.studentName}
+          </div>
+          <div className="flex w-[64px] justify-center items-center aspect-square">
+            <button type="button" className="flex border-1 border-gray-500 w-12 h-12 cursor-pointer items-center justify-center rounded-full">
+              <UserMinus width={24} height={24} />
+            </button>
+          </div>
+        </div>
+      </ListViewItemWrapper>
+    );
+  };
 
   return (
     <div className="flex flex-row bg-gray-300 w-screen justify-center items-center">
@@ -148,86 +181,168 @@ export default function Assignments() {
 
         {/* Left Panel content starts here. */}
         <div className="flex flex-col  items-center p-8 z-10 w-full h-full">
-          {/* We will put this here to prevent a linting error on vercel. */}
-          <button onClick={() => setIsShowRightPanel(!isShowRightPanel)}>
-            Show Right Panel
-          </button>
+          {!isShowDetails ? (
+            <div className="flex flex-col items-center w-full h-max">
+              <div
+                className="flex items-center w-full section-header-wrapper"
+                onClick={() => setIsOngoingExpanded(!isOngoingExpanded)}
+              >
+                <div className="flex flex-col justify-center items-center w-5 aspect-square transition-transform duration-250 ease-in-out">
+                  <ChevronRight
+                    className={`h-4 w-4 ${isOngoingExpanded && "rotate-90"}`}
+                  />
+                </div>
+                <div className="flex-1 flex-col justify-start items-center">
+                  <h2 className="section-header">On-going Assignments:</h2>
+                </div>
+              </div>
 
-          <div
-            className="flex items-center w-full section-header-wrapper"
-            onClick={() => setIsOngoingExpanded(!isOngoingExpanded)}
-          >
-            <div className="flex flex-col justify-center items-center w-5 aspect-square transition-transform duration-250 ease-in-out">
-              <ChevronRight
-                className={`h-4 w-4 ${isOngoingExpanded && "rotate-90"}`}
-              />
-            </div>
-            <div className="flex-1 flex-col justify-start items-center">
-              <h2 className="section-header">On-going Assignments:</h2>
-            </div>
-          </div>
+              {isOngoingExpanded ? (
+                <div className={`flex items-center w-full h-max mb-16`}>	
+                  {/* Ongoing Assignments Section starts here. */}
+                  <ListView data={assignmentsData.filter(a => a.status === "ongoing")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "ongoing").length * 110) + 2 }} />
+                  {/* Ongoing Assignments Section ends here. */}
+                </div>
+              ) : (<div className="flex h-16 w-full" />)}
 
-          {isOngoingExpanded ? (
-            <div className={`flex items-center w-full h-max mb-16`}>	
-							{/* Ongoing Assignments Section starts here. */}
-							<ListView data={assignmentsData.filter(a => a.status === "ongoing")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "ongoing").length * 110) + 2 }} />
-							{/* Ongoing Assignments Section ends here. */}
-						</div>
-          ) : (<div className="flex h-16 w-full" />)}
+              <div
+                className="flex flex-row items-center w-full section-header-wrapper"
+                onClick={() => setIsSubmittedExpanded(!isSubmittedExpanded)}
+              >
+                <div className="flex justify-center items-center w-5 aspect-square transition-transform duration-250 ease-in-out">
+                  <ChevronRight
+                    className={`h-4 w-4 ${isSubmittedExpanded && "rotate-90"}`}
+                  />
+                </div>
+                <div className="flex-1 flex-col justify-start items-center">
+                  <h2 className="section-header">Upcoming Assignments:</h2>
+                </div>
+              </div>
 
-          <div
-            className="flex flex-row items-center w-full section-header-wrapper"
-            onClick={() => setIsSubmittedExpanded(!isSubmittedExpanded)}
-          >
-            <div className="flex justify-center items-center w-5 aspect-square transition-transform duration-250 ease-in-out">
-              <ChevronRight
-                className={`h-4 w-4 ${isSubmittedExpanded && "rotate-90"}`}
-              />
-            </div>
-            <div className="flex-1 flex-col justify-start items-center">
-              <h2 className="section-header">Upcoming Assignments:</h2>
-            </div>
-          </div>
+              {isSubmittedExpanded ? (
+                <div 
+                  className="flex items-center w-full mb-16"
+                  style={{
+                    height: (assignmentsData.filter(a => a.status === "submitted").length * 110) + 2
+                  }}
+                >
+                  {/* Submitted Assignments Section starts here. */}
+                  <ListView data={assignmentsData.filter(a => a.status === "submitted")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "submitted").length * 110) + 2 }} />
+                  {/* Submitted Assignments Section ends here. */}
+                </div>
+              ) : (<div className="flex h-16 w-full" />)}
 
-          {isSubmittedExpanded ? (
-            <div 
-              className="flex items-center w-full mb-16"
-              style={{
-                height: (assignmentsData.filter(a => a.status === "submitted").length * 110) + 2
-              }}
-            >
-              {/* Submitted Assignments Section starts here. */}
-							<ListView data={assignmentsData.filter(a => a.status === "submitted")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "submitted").length * 110) + 2 }} />
-							{/* Submitted Assignments Section ends here. */}
-            </div>
-          ) : (<div className="flex h-16 w-full" />)}
+              <div className="flex flex-row items-center w-full section-header-wrapper">
+                <div
+                  className="flex justify-center items-center w-5 aspect-square transition-transform duration-250 ease-in-out"
+                  onClick={() => setIsCompletedExpanded(!isCompletedExpanded)}
+                >
+                  <ChevronRight
+                    className={`h-4 w-4 ${isCompletedExpanded && "rotate-90"}`}
+                  />
+                </div>
+                <div className="flex-1 flex-col justify-start items-center">
+                  <h2 className="section-header">Completed Assignments:</h2>
+                </div>
+              </div>
 
-          <div className="flex flex-row items-center w-full section-header-wrapper">
-            <div
-              className="flex justify-center items-center w-5 aspect-square transition-transform duration-250 ease-in-out"
-              onClick={() => setIsCompletedExpanded(!isCompletedExpanded)}
-            >
-              <ChevronRight
-                className={`h-4 w-4 ${isCompletedExpanded && "rotate-90"}`}
-              />
+              {isCompletedExpanded ? (
+                <div 
+                  className="flex items-center w-full mb-36"
+                  style={{
+                    height: (assignmentsData.filter(a => a.status === "completed").length * 100) + 10
+                  }}
+                >	
+                  {/* Completed Assignments Section starts here. */}
+                  <ListView data={assignmentsData.filter(a => a.status === "completed")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "completed").length * 100) + 10 }} />
+                  {/* Completed Assignments Section ends here. */}
+                </div>
+              ) : (<div className="flex h-16 w-full" />)}
             </div>
-            <div className="flex-1 flex-col justify-start items-center">
-              <h2 className="section-header">Completed Assignments:</h2>
-            </div>
-          </div>
+          ) : (
+            <div className="flex flex-col items-start w-full h-max">
+              <div className="flex-row w-full h-16 justify-start px-4">
+                <button type="button" onClick={() => setIsShowDetails(false)} className="flex flex-row items-center justify-start gap-x-2">
+                  <ArrowLeft width={24} height={24} color={"#666"} /> Back to Assignments
+                </button>
+              </div>
+              <div className="flex-1 flex-row w-full h-max justify-start px-4">
+                <div className="assignment-title-wrapper px-4 py-2">
+                  <h1 className="assignment-title">{assignmentDetails.assignmentTitle}</h1>
+                </div>
+                <div className="flex w-full h-max items-center">
+                  <div className="flex w-1/2 justify-start">Due Date: {assignmentDetails.dueDate}</div>
+                  <div className="flex w-1/2 justify-end">Module: {assignmentDetails.module}</div>
+                </div>
+                <div 
+                  className="assignment-desc w-full h-max items-start justify-start p-4 my-4 min-h-[200px] rounded-md bg-gray-100"
+                  dangerouslySetInnerHTML={{ __html: DOMPurify().sanitize(assignmentDetails.description) }}
+                />
+                <div className="w-full items-center justify-center h-12 mt-9 rounded-md">
+                  <ProgressBar 
+                    min={0}
+                    max={100}
+                    value={Math.round(assignmentDetails.progressPercent * 100)}
+                    labelVisible={true} 
+                    labelPlacement={"end"}
+                    label={props => {
+                      return <div className="h-full items-center mb-2 text-[16px]">{props.value}% Completed</div>;
+                    }}
+                    progressStyle={{
+                      borderRadius: "4px",
+                      backgroundColor: "darkgreen"
+                    }}
+                    style={{
+                      height: "80%",
+                      width: "100%",
+                      borderRadius: "4px"
+                    }} />
+                </div>
 
-          {isCompletedExpanded ? (
-            <div 
-              className="flex items-center w-full mb-36"
-              style={{
-                height: (assignmentsData.filter(a => a.status === "completed").length * 100) + 10
-              }}
-            >	
-              {/* Completed Assignments Section starts here. */}
-							<ListView data={assignmentsData.filter(a => a.status === "completed")} item={assignmentsRender} style={{ width: '100%', height: (assignmentsData.filter(a => a.status === "completed").length * 100) + 10 }} />
-							{/* Completed Assignments Section ends here. */}
+                <div className="flex flex-row items-center w-full mt-4 section-header-wrapper">
+                  <div className="flex-1 flex-col justify-start items-center">
+                    <h2 className="section-header">Team members:</h2>
+                  </div>
+                  <div
+                    className="flex justify-center items-center w-5 aspect-square transition-transform duration-250 ease-in-out"
+                  >
+                    <UserPlus className="h-4 w-4" />
+                  </div>
+                </div>
+
+                <div className="flex w-full h-max">
+                  <ListView data={assignmentDetails.teamMembers} item={teamMembersRender} className="w-full" style={{ height: (assignmentDetails.teamMembers.length * 64) + 2 }} />
+                </div>
+
+                <Button
+                  fillMode={"solid"}
+                  themeColor={"primary"}
+                  className="mt-8 items-center justify-center rounded-lg"
+                  onClick={() => setIsShowRightPanel(!isShowRightPanel)}
+                  style={{
+                    height: "64px",
+                    width: "100%"
+                  }}
+                >
+                  <div className="flex text-2xl w-full items-center">
+                    Group Discussions&nbsp;<MessagesSquare className="ml-2" width={20} height={20} color={"#efefef"} />
+                  </div>
+                </Button>
+
+                <Button
+                  fillMode={"solid"}
+                  themeColor={"secondary"}
+                  className="w-full  h-16 mt-6 items-center justify-center rounded-lg"
+                  onClick={() => setIsShowRightPanel(!isShowRightPanel)}
+                >
+                  <div className="flex text-2xl w-full items-center">
+                    Lecturer's Feedbacks&nbsp;<MessageCircleReply className="ml-2" width={20} height={20} color={"#efefef"} />
+                  </div>
+                </Button>
+
+              </div>
             </div>
-          ) : (<div className="flex h-16 w-full" />)}
+          )}
         </div>
         {/* Left Panel content ends here. */}
       </div>
