@@ -319,6 +319,17 @@ _(Potential Pages + Logical Work Units)_
 - I also want to figure out how to customize the dates in Week View mode to just `"dd/MM"`, and remove the short day of the week (e.g. "Mon", "Tue", etc). 
 - Finish adding the current semester feedback list and it's items.
 
+### 15th May, Thu: UI Prototyping for Assignments Details view (WIP)
+
+- Began adding the "view mode" content layout to the details view.
+- Some of the UI elements are not very responsive at the moment, but they can be enhanced later.
+- Added a basic navigation between the ListView items to Details view (really, we're just toggling a state variable).
+
+**(Next Steps)**
+- Thinking of adding that swiping user gesture so it can work uniformly across both desktop and mobile browsers.
+- Group Discussions & Lecturer's Feedbacks views (right panel).
+- Edit mode for the Details View.
+
 ### 14th May, Wed: UI Prototyping for Assignments Listing view (Completed)
 
 - Just finished the UI prototyping for the Assignments Listing view.
