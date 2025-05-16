@@ -327,6 +327,9 @@ _(Potential Pages + Logical Work Units)_
   - Implemented chat bubbles with profile pictures, timestamps, and realistic back-and-forth conversations spanning multiple days.
   - Designed the message input area with a textarea, a send button, and an attachment button.  We iterated on the layout of these elements to ensure clarity and avoid potential overlay issues.
   - Added support for displaying image attachments within chat messages, experimenting with aspect ratios and spacing to achieve the desired visual presentation.
+- Add the modal overlay for display the attached images to a message bubble.
+- Added simple Chevron buttons for navigating between the images.
+- Images now can display with the right aspect ratio within the overlay.
 
 ### 15th May, Thu: UI Prototyping for Assignments Details view (WIP)
 

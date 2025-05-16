@@ -5,7 +5,9 @@ import Image from "next/image";
 import { 
   Menu, 
   X, 
+  ChevronLeft,
   ChevronRight, 
+  Expand,
   ArrowLeft, 
   UserPlus, 
   UserMinus, 
@@ -26,7 +28,7 @@ import { ChipList, Chip, ChipProps, Button } from '@progress/kendo-react-buttons
 import DOMPurify from 'dompurify';
 
 import { assignmentsData } from "@/shared/data/assignments-page-data";
-import { assignmentDetails } from "@/shared/data/assignments-page-data";
+import { assignmentDetails, assignmentFeedbacks } from "@/shared/data/assignments-page-data";
 
 export default function Assignments() {
   const [isShowMenu, setIsShowMenu] = useState<boolean>(false);
@@ -40,6 +42,8 @@ export default function Assignments() {
 
   const [isShowRightPanel, setIsShowRightPanel] = useState(false);
   const [isShowDiscussion, setIsShowDiscussion] = useState(false);
+  const [isShowImageModal, setIsShowImageModal] = useState(false);
+  const [currModalImage, setCurrModalImage] = useState<string>("");
   const [isShowFeedbacks, setIsShowFeedbacks] = useState(false);
 
 	const assignmentsRender = (props: ListViewItemProps) => {
@@ -110,6 +114,43 @@ export default function Assignments() {
       </ListViewItemWrapper>
     );
 	};
+
+  const feedbackRender = (props: ListViewItemProps) => {
+    const item = props.dataItem;
+  
+    return (
+      <ListViewItemWrapper
+      className="p-[5px] h-max"
+      style={{ borderBottom: "1px solid lightgrey" }}
+    >
+      <div className="flex flex-col w-full h-full p-4"> {/* Use flex-col, add padding */}
+        <div className="flex items-center">
+          <div className="w-10 h-10 rounded-full overflow-hidden mr-3"> 
+            <Image
+              src={item.profilePic}
+              alt={item.lecturer}
+              width={40}
+              height={40}
+              className="object-cover"
+            />
+          </div>
+          <div> 
+            <p className="font-medium">{item.lecturer}</p>
+            <span className="text-xs text-gray-500">{item.dateGiven}</span> 
+          </div>
+        </div>
+        <div className="mt-3 text-gray-800 text-lg italic"> {/* Feedback content styling */}
+          {item.feedbackContent}
+        </div>
+        <div className="flex justify-start items-center w-max">
+          <button className="bg-gray-200 rounded-md px-3 py-2 mt-3 text-sm">
+            Related Task: <strong>{item.task.taskTitle}</strong>
+          </button>
+        </div>
+      </div>
+    </ListViewItemWrapper>
+    );
+  }
 
   const teamMembersRender = (props: ListViewItemProps) => {
     const item = props.dataItem;
@@ -371,6 +412,56 @@ export default function Assignments() {
           opacity: isShowRightPanel ? 1 : 0,
         }}
       >
+        {/* Image Modal Overlay */}
+        {isShowImageModal && (
+          <div className="absolute left-0 top-0 w-full h-full z-40 items-center justify-center"
+            style={{
+              backgroundColor: "#000000AA"
+            }}
+          >
+            <div className="relative">  {/* Container for image and controls */}
+              <button className="absolute top-4 right-4 z-50 text-white"> 
+                <X size={32} onClick={() => setIsShowImageModal(false)} /> {/* Close button */}
+              </button>
+            </div>
+
+            <div className="w-[90%] h-[90%] opacity-100">
+              {/* Left Chevron button */}
+              {currModalImage.includes("02") && (
+                <button className="absolute top-[50%] left-5 z-50 text-white"
+                  onClick={() => {
+                    if (currModalImage.includes("02")) {
+                      setCurrModalImage("/sample-wireframes-01.jpg");
+                    }
+                  }}
+                > 
+                  <ChevronLeft 
+                    size={48} 
+                  /> 
+                </button>
+              )}
+
+              <Image src={currModalImage} alt="attachment image" fill style={{ objectFit: "contain" }} className="aspect-auto" />
+              
+              {/* Right Chevron button */}
+              {currModalImage.includes("01") && (
+                <button 
+                  className="absolute top-[50%] right-5 z-50 text-white"
+                  onClick={() => {
+                    if (currModalImage.includes("01")) {
+                      setCurrModalImage("/sample-wireframes-02.jpg");
+                    }
+                  }}
+                > 
+                  <ChevronRight size={48} /> 
+                </button>
+              )}
+
+            </div>
+          </div>
+        )}
+        
+
         <div className="flex w-full items-center justify-end h-max">
           <button 
             type="button" 
@@ -466,8 +557,14 @@ export default function Assignments() {
                 <div className="bg-blue-500 text-white rounded-lg p-3 max-w-xs ml-4"> 
                   <p className="text-sm">Almost finished with the wireframes! I just need to finish up the responsive layouts for mobile. Should have them done by tomorrow. 😊</p>
                   <div className="flex flex-row gap-x-2 mt-2"> {/* Container for attachment previews */}
-                    <div className="w-1/2">
-                      <div className="relative aspect-square overflow-hidden rounded-md"> {/* Image 1 */}
+                    <div 
+                      className="w-1/2 relative"
+                      onClick={() => { 
+                        setIsShowImageModal(true); 
+                        setCurrModalImage("/sample-wireframes-01.jpg") 
+                      }}
+                    > {/* Add "relative" for image overlay */}
+                      <div className="relative aspect-square overflow-hidden rounded-md">
                         <Image 
                           src="/sample-wireframes-01.jpg"
                           fill={true}
@@ -476,8 +573,17 @@ export default function Assignments() {
                           className="object-cover w-1/2 aspect-square" 
                         />
                       </div>
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-50 bg-gray-900 rounded-md transition duration-300">
+                        <Expand className="text-white" size={32} /> {/* Expand icon */}
+                      </div>
                     </div>
-                    <div className="w-1/2">
+                    <div 
+                      className="w-1/2 relative"
+                      onClick={() => { 
+                        setIsShowImageModal(true); 
+                        setCurrModalImage("/sample-wireframes-02.jpg") 
+                      }}
+                    >
                       <div className="relative aspect-square overflow-hidden rounded-md"> {/* Image 2 */}
                         <Image 
                           src="/sample-wireframes-02.jpg"
@@ -486,6 +592,9 @@ export default function Assignments() {
                           fill={true}
                           className="object-cover w-1/2 aspect-square" 
                         />
+                      </div>
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-50 bg-gray-900 rounded-md transition duration-300">
+                        <Expand className="text-white" size={32} /> {/* Expand icon */}
                       </div>
                     </div>
                   </div>
@@ -569,13 +678,18 @@ export default function Assignments() {
 
         {/* Lecturer's Feedbacks section starts here. */}
         {isShowFeedbacks && (
-          <div className="flex-1 w-full h-screen">
+          <div className="flex-1 w-full h-max flex flex-col">
             <div className="flex justify-start items-center w-full section-header-wrapper">
               <h2 className="section-header">Lecturer Feedbacks:</h2>
             </div>
+
+            <div className="flex w-full h-max">
+              {/* Current Semester Feedbacks Section starts here. */}
+              <ListView data={assignmentFeedbacks} item={feedbackRender} style={{ width: '100%' }} />
+              {/* Current Semester Feedbacks Section ends here. */}
+            </div>
           </div>
         )}
-        {/* Lecturer's Feedbacks section ends here. */}
       </div>
     </div>
   );

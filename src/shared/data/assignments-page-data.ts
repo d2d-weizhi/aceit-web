@@ -187,3 +187,28 @@ export const assignmentDetails = {
     { id: "2", tagTitle: "Figma" }
   ]
 };
+
+export const assignmentFeedbacks = [
+  {
+    id: 6,
+    feedbackContent: "The user research and analysis presented in this section are thorough and well-structured. The team has clearly identified the target audience's needs and pain points, which is evident in the detailed user personas and journey maps.  I especially appreciate the inclusion of competitive analysis, which provides valuable context for the project.",
+    task: {
+      taskId: "17263",
+      taskTitle: "User Research & Analysis Report"
+    },
+    profilePic: "/male-lecturer-profile-image-01.jpg",
+    lecturer: "Jimmy Yuen",
+    dateGiven: new Date("2024-05-04").toLocaleDateString("en-SG"),
+  },
+  {
+    id: 7, // Make sure each feedback has a unique ID
+    feedbackContent: "The wireframes are a good starting point, but I recommend adding more detail to illustrate the interactions and user flows. For example, consider using annotations to explain how different UI elements behave upon user interaction. Also, ensure your wireframes are consistent in terms of styling and labeling conventions.",
+    task: {
+      taskId: "17261",
+      taskTitle: "Web App Wireframes (Lo-Fi)"
+    },
+    profilePic: "/female-lecturer-profile-image-01.jpg",
+    lecturer: "Mandy Mok",
+    dateGiven: new Date("2024-05-01").toLocaleDateString("en-SG"),
+  }
+];
