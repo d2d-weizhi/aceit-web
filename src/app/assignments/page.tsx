@@ -500,7 +500,7 @@ export default function Assignments() {
                   </div>
                   <div className="bg-gray-200 rounded-lg p-3 max-w-xs">
                     <p className="text-xs font-medium text-gray-800">Agnes Yeo</p> 
-                    <p className="text-sm">Hey everyone, just wanted to check in and see how the project's coming along!</p>
+                    <p className="text-sm">Hey everyone, just wanted to check in and see how the project&apos;s coming along!</p>
                     <span className="text-xs text-gray-500">Tue 10:15 am</span>
                   </div>
                 </div>
@@ -508,7 +508,7 @@ export default function Assignments() {
 
               <div className="flex justify-end mb-4">
                 <div className="bg-blue-500 text-white rounded-lg p-3 max-w-xs ml-4"> 
-                  <p className="text-sm">Hey Agnes! I'm making good progress on the research. How's the mood board coming along?</p>
+                  <p className="text-sm">Hey Agnes! I&apos;m making good progress on the research. How&apos;s the mood board coming along?</p>
                   <span className="text-xs text-gray-100">Tue 10:45 am</span> 
                 </div>
               </div>
@@ -634,7 +634,7 @@ export default function Assignments() {
                   </div>
                   <div className="bg-gray-200 rounded-lg p-3 max-w-xs">
                     <p className="text-xs font-medium text-gray-800">Michael Chan</p> 
-                    <p className="text-sm">Great work everyone! Let's aim to finalize everything by this weekend so we can start practicing the presentation. 👍</p>
+                    <p className="text-sm">Great work everyone! Let&apos;s aim to finalize everything by this weekend so we can start practicing the presentation. 👍</p>
                     <span className="text-xs text-gray-500">Thu 8:55 pm</span>
                   </div>
                 </div>
@@ -643,7 +643,7 @@ export default function Assignments() {
               {/* Friday */}
               <div className="flex justify-end mb-4">
                 <div className="bg-blue-500 text-white rounded-lg p-3 max-w-xs ml-4"> 
-                  <p className="text-sm">Will do! I'm just adding the finishing touches to the mobile wireframes. 😄</p>
+                  <p className="text-sm">Will do! I&apos;m just adding the finishing touches to the mobile wireframes. 😄</p>
                   <span className="text-xs text-gray-100">Fri 10:02 am</span> 
                 </div>
               </div>
