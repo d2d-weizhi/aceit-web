@@ -2,7 +2,17 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Menu, X, ChevronRight, ArrowLeft, UserPlus, UserMinus, MessagesSquare, MessageCircleReply } from "lucide-react";
+import { 
+  Menu, 
+  X, 
+  ChevronRight, 
+  ArrowLeft, 
+  UserPlus, 
+  UserMinus, 
+  MessagesSquare, 
+  MessageCircleReply, 
+  Paperclip,
+  SendHorizonal } from "lucide-react";
 import SideDrawer from "@/shared/components/sidedrawer";
 
 import {
@@ -29,6 +39,8 @@ export default function Assignments() {
   const [isCompletedExpanded, setIsCompletedExpanded] = useState<boolean>(true);
 
   const [isShowRightPanel, setIsShowRightPanel] = useState(false);
+  const [isShowDiscussion, setIsShowDiscussion] = useState(false);
+  const [isShowFeedbacks, setIsShowFeedbacks] = useState(false);
 
 	const assignmentsRender = (props: ListViewItemProps) => {
     const item = props.dataItem;
@@ -318,7 +330,10 @@ export default function Assignments() {
                   fillMode={"solid"}
                   themeColor={"primary"}
                   className="mt-8 items-center justify-center rounded-lg"
-                  onClick={() => setIsShowRightPanel(!isShowRightPanel)}
+                  onClick={() => {
+                    setIsShowRightPanel(true);
+                    setIsShowDiscussion(true);
+                  }}
                   style={{
                     height: "64px",
                     width: "100%"
@@ -333,7 +348,10 @@ export default function Assignments() {
                   fillMode={"solid"}
                   themeColor={"secondary"}
                   className="w-full  h-16 mt-6 items-center justify-center rounded-lg"
-                  onClick={() => setIsShowRightPanel(!isShowRightPanel)}
+                  onClick={() => {
+                    setIsShowRightPanel(true);
+                    setIsShowFeedbacks(true);
+                  }}
                 >
                   <div className="flex text-2xl w-full items-center">
                     Lecturer&apos;s Feedbacks&nbsp;<MessageCircleReply className="ml-2" width={20} height={20} color={"#efefef"} />
@@ -347,14 +365,217 @@ export default function Assignments() {
         {/* Left Panel content ends here. */}
       </div>
       <div
-        className="flex-col bg-white p-4 relative h-screen overflow-y-auto w-[50%] opacity-0 transition-all duration-250 ease-out"
+        className="flex-1 flex-col bg-white p-4 relative h-screen overflow-x-hidden overflow-y-hidden w-[50%] opacity-0 transition-all duration-250 ease-out"
         style={{
           transitionDelay: isShowRightPanel ? "250ms" : "0ms", // Delay for showing
           opacity: isShowRightPanel ? 1 : 0,
         }}
       >
-        {/* ... your other Dashboard content ... */}
-        <h2>Right Panel here</h2>
+        <div className="flex w-full items-center justify-end h-max">
+          <button 
+            type="button" 
+            onClick={() => {
+              setIsShowRightPanel(false);
+              setIsShowDiscussion(false);
+              setIsShowFeedbacks(false);
+            }}
+          >
+            <X width={32} height={32} color={"#141414"} />
+          </button>
+        </div>
+
+        {/* Group Discussion section starts here. */}
+        {isShowDiscussion && (
+          <div className="flex-1 w-full h-[80%] flex flex-col">
+
+            <div className="flex justify-start items-center h-max w-full section-header-wrapper">
+              <h2 className="section-header">Group Discussions:</h2>
+            </div>
+
+            {/* Chat Messages Area */}
+            <div className="flex-grow flex-col p-4 overflow-y-auto">
+
+              {/* Tuesday */}
+              <div className="flex mb-4">
+                <div className="flex items-start mr-4"> 
+                  <div className="w-8 h-8 rounded-full overflow-hidden mr-2">
+                    <Image 
+                      src="/female-student-chinese.jpg" 
+                      alt="Profile Picture" 
+                      width={50} 
+                      height={50} 
+                      className="object-cover" 
+                    />
+                  </div>
+                  <div className="bg-gray-200 rounded-lg p-3 max-w-xs">
+                    <p className="text-xs font-medium text-gray-800">Agnes Yeo</p> 
+                    <p className="text-sm">Hey everyone, just wanted to check in and see how the project's coming along!</p>
+                    <span className="text-xs text-gray-500">Tue 10:15 am</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex justify-end mb-4">
+                <div className="bg-blue-500 text-white rounded-lg p-3 max-w-xs ml-4"> 
+                  <p className="text-sm">Hey Agnes! I'm making good progress on the research. How's the mood board coming along?</p>
+                  <span className="text-xs text-gray-100">Tue 10:45 am</span> 
+                </div>
+              </div>
+
+              {/* Wednesday */}
+              <div className="flex mb-4">
+                <div className="flex items-start mr-4"> 
+                  <div className="w-8 h-8 rounded-full overflow-hidden mr-2">
+                    <Image 
+                      src="/female-student-chinese.jpg" 
+                      alt="Profile Picture" 
+                      width={50} 
+                      height={50} 
+                      className="object-cover" 
+                    />
+                  </div>
+                  <div className="bg-gray-200 rounded-lg p-3 max-w-xs">
+                    <p className="text-xs font-medium text-gray-800">Agnes Yeo</p> 
+                    <p className="text-sm">Hey guys, I just finished working on the 2nd moodboard. I love to get your feedbacks.</p>
+                    <span className="text-xs text-gray-500">Wed 11:01 am</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex mb-4">
+                <div className="flex items-start mr-4"> 
+                  <div className="w-8 h-8 rounded-full overflow-hidden mr-2">
+                    <Image 
+                      src="/female-student-indian.jpg" 
+                      alt="Profile Picture" 
+                      width={50} 
+                      height={50} 
+                      className="object-cover" 
+                    />
+                  </div>
+                  <div className="bg-gray-200 rounded-lg p-3 max-w-xs">
+                    <p className="text-xs font-medium text-gray-800">Avathi Kumar</p> 
+                    <p className="text-sm">Hey Weizhi, how is the wireframes going? Have you finished on the web version?</p>
+                    <span className="text-xs text-gray-500">Wed 6:20 pm</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Thursday */}
+              <div className="flex justify-end mb-4">
+                <div className="bg-blue-500 text-white rounded-lg p-3 max-w-xs ml-4"> 
+                  <p className="text-sm">Almost finished with the wireframes! I just need to finish up the responsive layouts for mobile. Should have them done by tomorrow. 😊</p>
+                  <div className="flex flex-row gap-x-2 mt-2"> {/* Container for attachment previews */}
+                    <div className="w-1/2">
+                      <div className="relative aspect-square overflow-hidden rounded-md"> {/* Image 1 */}
+                        <Image 
+                          src="/sample-wireframes-01.jpg"
+                          fill={true}
+                          quality={90}
+                          alt="Mobile friendly wireframes" 
+                          className="object-cover w-1/2 aspect-square" 
+                        />
+                      </div>
+                    </div>
+                    <div className="w-1/2">
+                      <div className="relative aspect-square overflow-hidden rounded-md"> {/* Image 2 */}
+                        <Image 
+                          src="/sample-wireframes-02.jpg"
+                          alt="Mobile friendly wireframes"
+                          quality={90}
+                          fill={true}
+                          className="object-cover w-1/2 aspect-square" 
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <span className="text-xs text-gray-100">Thu 2:15 pm</span> 
+                </div>
+              </div>
+
+              <div className="flex mb-4">
+                <div className="flex items-start mr-4"> 
+                  <div className="w-8 h-8 rounded-full overflow-hidden mr-2">
+                    <Image 
+                      src="/male-student-chinese.jpg" 
+                      alt="Profile Picture" 
+                      width={50} 
+                      height={50} 
+                      className="object-cover" 
+                    />
+                  </div>
+                  <div className="bg-gray-200 rounded-lg p-3 max-w-xs">
+                    <p className="text-xs font-medium text-gray-800">Michael Chan</p> 
+                    <p className="text-sm">Sounds good! Let me know if you need any help.</p>
+                    <span className="text-xs text-gray-500">Thu 11:32 am</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex mb-4">
+                <div className="flex items-start mr-4"> 
+                  <div className="w-8 h-8 rounded-full overflow-hidden mr-2">
+                    <Image 
+                      src="/male-student-chinese.jpg" 
+                      alt="Profile Picture" 
+                      width={50} 
+                      height={50} 
+                      className="object-cover" 
+                    />
+                  </div>
+                  <div className="bg-gray-200 rounded-lg p-3 max-w-xs">
+                    <p className="text-xs font-medium text-gray-800">Michael Chan</p> 
+                    <p className="text-sm">Great work everyone! Let's aim to finalize everything by this weekend so we can start practicing the presentation. 👍</p>
+                    <span className="text-xs text-gray-500">Thu 8:55 pm</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Friday */}
+              <div className="flex justify-end mb-4">
+                <div className="bg-blue-500 text-white rounded-lg p-3 max-w-xs ml-4"> 
+                  <p className="text-sm">Will do! I'm just adding the finishing touches to the mobile wireframes. 😄</p>
+                  <span className="text-xs text-gray-100">Fri 10:02 am</span> 
+                </div>
+              </div>
+
+              {/* ... more messages would be added here ... */}
+
+            </div>
+
+            {/* Message Input Area */}
+            <div className="border-t border-gray-300 p-4 bg-white"> 
+              <div className="flex flex-col justify-start"> {/* Use flex-col for vertical layout */}
+                <div className="flex"> {/* Container for textarea and send button */}
+                  <textarea 
+                    className="flex-grow resize-none border border-gray-400 rounded-md p-2 mr-2 focus:outline-none focus:ring focus:ring-blue-300 bg-gray-100" 
+                    placeholder="Type your message..."
+                  ></textarea>
+                  <button className="flex bg-blue-500 text-white px-4 py-2 rounded-md self-start items-center justify-center ml-2"> 
+                    Send <SendHorizonal width={20} height={20} className="ml-1" />
+                  </button>
+                </div>
+
+                <button className="bg-gray-300 rounded-md py-2 px-4 mt-2 flex items-center justify-center w-max"> {/* Attachment button below */}
+                  <Paperclip width={16} height={16} className="mr-1"/> Add Attachments
+                </button>
+              </div>
+            </div>
+
+          </div>
+        )}
+        {/* Group Discussion section ends here. */}
+        
+
+        {/* Lecturer's Feedbacks section starts here. */}
+        {isShowFeedbacks && (
+          <div className="flex-1 w-full h-screen">
+            <div className="flex justify-start items-center w-full section-header-wrapper">
+              <h2 className="section-header">Lecturer Feedbacks:</h2>
+            </div>
+          </div>
+        )}
+        {/* Lecturer's Feedbacks section ends here. */}
       </div>
     </div>
   );

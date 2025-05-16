@@ -319,6 +319,15 @@ _(Potential Pages + Logical Work Units)_
 - I also want to figure out how to customize the dates in Week View mode to just `"dd/MM"`, and remove the short day of the week (e.g. "Mon", "Tue", etc). 
 - Finish adding the current semester feedback list and it's items.
 
+### 16th May, Fri: Group Discussions & Lecturer Feedbacks
+
+- Right Panel Setup: Successfully implemented the right panel layout that houses both the Group Discussion and Lecturer Feedbacks sections. We decided on a fixed h-[80%] height for the panel after testing different options and considering zoom levels.
+- Group Discussion UI:
+  - Built out the core structure of the Group Discussion area using Tailwind CSS for styling.
+  - Implemented chat bubbles with profile pictures, timestamps, and realistic back-and-forth conversations spanning multiple days.
+  - Designed the message input area with a textarea, a send button, and an attachment button.  We iterated on the layout of these elements to ensure clarity and avoid potential overlay issues.
+  - Added support for displaying image attachments within chat messages, experimenting with aspect ratios and spacing to achieve the desired visual presentation.
+
 ### 15th May, Thu: UI Prototyping for Assignments Details view (WIP)
 
 - Began adding the "view mode" content layout to the details view.
