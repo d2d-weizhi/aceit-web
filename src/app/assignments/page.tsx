@@ -370,7 +370,7 @@ export default function Assignments() {
 												className="assignment-title"
 												onClick={() => setIsEditTitle(true)}
 											>
-												details.assignmentTitle
+												{details.assignmentTitle}
 											</h1>
 										)
 									}
