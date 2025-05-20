@@ -14,6 +14,7 @@
     "@progress/kendo-react-gantt": "^10.2.0",
     "@progress/kendo-react-gauges": "^10.2.0",
     "@progress/kendo-react-grid": "^10.2.0",
+    "@progress/kendo-react-inputs": "^10.2.0",
     "@progress/kendo-react-layout": "^10.2.0",
     "@progress/kendo-react-listview": "^10.2.0",
     "@progress/kendo-react-progressbars": "^10.2.0",
