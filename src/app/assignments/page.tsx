@@ -360,8 +360,8 @@ export default function Assignments() {
 													fontSize: "2.5rem",
 													fontWeight: 400,
 													letterSpacing: "1px",
-													value={details.assignmentTitle}
 												}}
+												value={details.assignmentTitle}
 												onChange={(event: TextBoxChangeEvent) => setDetails(prevDetails => ({...prevDetails, assignmentTitle: event.value as string}))}
 												onBlur={() => setIsEditTitle(false)}
 											/>
