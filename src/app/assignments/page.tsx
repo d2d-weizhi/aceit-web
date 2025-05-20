@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { 
   Menu, 
@@ -24,11 +24,36 @@ import {
 } from "@progress/kendo-react-listview";
 import { ProgressBar } from '@progress/kendo-react-progressbars';
 import { ChipList, Chip, ChipProps, Button } from '@progress/kendo-react-buttons';
+import { TextBox, TextBoxChangeEvent } from '@progress/kendo-react-inputs';
 
 import DOMPurify from 'dompurify';
 
 import { assignmentsData } from "@/shared/data/assignments-page-data";
 import { assignmentDetails, assignmentFeedbacks } from "@/shared/data/assignments-page-data";
+
+interface ITeamMember {
+	id: string;
+	studentName: string;
+	profileImg: string;
+}
+
+interface ITag {
+	id: string;
+	tagTitle: string;
+}
+
+interface IAssignmentDetails {
+	id: string;
+	assignmentTitle: string;
+	module: string;
+	dueDate: string;
+	description: string;
+	progressPercent: number;
+	isGroup: boolean;
+	status: string;
+	teamMembers: ITeamMember[];
+	tags: ITag[];
+}
 
 export default function Assignments() {
   const [isShowMenu, setIsShowMenu] = useState<boolean>(false);
@@ -39,6 +64,10 @@ export default function Assignments() {
   const [isOngoingExpanded, setIsOngoingExpanded] = useState<boolean>(true);
   const [isSubmittedExpanded, setIsSubmittedExpanded] = useState<boolean>(true);
   const [isCompletedExpanded, setIsCompletedExpanded] = useState<boolean>(true);
+
+	const [details, setDetails] = useState<IAssignmentDetails>(assignmentDetails);
+	const [isEditTitle, setIsEditTitle] = useState<boolean>(false);
+	const titleInputRef = useRef(null);
 
   const [isShowRightPanel, setIsShowRightPanel] = useState(false);
   const [isShowDiscussion, setIsShowDiscussion] = useState(false);
@@ -321,21 +350,43 @@ export default function Assignments() {
               </div>
               <div className="flex-1 flex-row w-full h-max justify-start px-4">
                 <div className="assignment-title-wrapper px-4 py-2">
-                  <h1 className="assignment-title">{assignmentDetails.assignmentTitle}</h1>
+                  <h1 
+										className="assignment-title"
+										onClick={() => setIsEditTitle(true)}
+									>
+										{isEditTitle 
+											? (
+												<TextBox
+													ref={titleInputRef}
+													fillMode={"flat"}
+													style={{
+														width: "100%",
+														fontSize: "2.5rem",
+														fontWeight: 400,
+														letterSpacing: "1px",
+														value={details.assignmentTitle}
+													}}
+													onChange={(event: TextBoxChangeEvent) => setDetails(prevDetails => ({...prevDetails, assignmentTitle: event.value as string}))}
+													onBlur={() => setIsEditTitle(false)}
+												/>
+											) 
+											: details.assignmentTitle
+										}
+									</h1>
                 </div>
                 <div className="flex w-full h-max items-center">
-                  <div className="flex w-1/2 justify-start">Due Date: {assignmentDetails.dueDate}</div>
-                  <div className="flex w-1/2 justify-end">Module: {assignmentDetails.module}</div>
+                  <div className="flex w-1/2 justify-start">Due Date: {details.dueDate}</div>
+                  <div className="flex w-1/2 justify-end">Module: {details.module}</div>
                 </div>
                 <div 
                   className="assignment-desc w-full h-max items-start justify-start p-4 my-4 min-h-[200px] rounded-md bg-gray-100"
-                  dangerouslySetInnerHTML={{ __html: DOMPurify().sanitize(assignmentDetails.description) }}
+                  dangerouslySetInnerHTML={{ __html: DOMPurify().sanitize(details.description) }}
                 />
                 <div className="w-full items-center justify-center h-12 mt-9 rounded-md">
                   <ProgressBar 
                     min={0}
                     max={100}
-                    value={Math.round(assignmentDetails.progressPercent * 100)}
+                    value={Math.round(details.progressPercent * 100)}
                     labelVisible={true} 
                     labelPlacement={"end"}
                     label={props => {
@@ -364,7 +415,7 @@ export default function Assignments() {
                 </div>
 
                 <div className="flex w-full h-max">
-                  <ListView data={assignmentDetails.teamMembers} item={teamMembersRender} className="w-full" style={{ height: (assignmentDetails.teamMembers.length * 64) + 2 }} />
+                  <ListView data={details.teamMembers} item={teamMembersRender} className="w-full" style={{ height: (details.teamMembers.length * 64) + 2 }} />
                 </div>
 
                 <Button
