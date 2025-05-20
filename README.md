@@ -324,6 +324,10 @@ _(Potential Pages + Logical Work Units)_
 - I'm currently on a break so that I can prioritise my part-time studies and any work-related commitments.
 - I currently have two months of studies left to complete, so it's the final stretch.
 - I'll continue to work on this project quietly and I will share my updates on my [DEV Community Profile](https://dev.to/d2d_weizhi) whenever I have something meaningful to share.
+- Started adding the Edit mode functionality.
+- Created a state object for assignment details.
+- Added the conditional logic for rendering the field and display value.
+- When the field loses focus, the `isEditTitle` state value will change.
 
 ### 16th May, Fri: Group Discussions & Lecturer Feedbacks
 
