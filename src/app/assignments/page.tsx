@@ -350,29 +350,30 @@ export default function Assignments() {
               </div>
               <div className="flex-1 flex-row w-full h-max justify-start px-4">
                 <div className="assignment-title-wrapper px-4 py-2">
-                  <h1 
-										className="assignment-title"
-										onClick={() => setIsEditTitle(true)}
-									>
-										{isEditTitle 
-											? (
-												<TextBox
-													ref={titleInputRef}
-													fillMode={"flat"}
-													style={{
-														width: "100%",
-														fontSize: "2.5rem",
-														fontWeight: 400,
-														letterSpacing: "1px",
-														value={details.assignmentTitle}
-													}}
-													onChange={(event: TextBoxChangeEvent) => setDetails(prevDetails => ({...prevDetails, assignmentTitle: event.value as string}))}
-													onBlur={() => setIsEditTitle(false)}
-												/>
-											) 
-											: details.assignmentTitle
-										}
-									</h1>
+									{isEditTitle 
+										? (
+											<TextBox
+												ref={titleInputRef}
+												fillMode={"flat"}
+												style={{
+													width: "100%",
+													fontSize: "2.5rem",
+													fontWeight: 400,
+													letterSpacing: "1px",
+													value={details.assignmentTitle}
+												}}
+												onChange={(event: TextBoxChangeEvent) => setDetails(prevDetails => ({...prevDetails, assignmentTitle: event.value as string}))}
+												onBlur={() => setIsEditTitle(false)}
+											/>
+										) : (
+											<h1 
+												className="assignment-title"
+												onClick={() => setIsEditTitle(true)}
+											>
+												details.assignmentTitle
+											</h1>
+										)
+									}
                 </div>
                 <div className="flex w-full h-max items-center">
                   <div className="flex w-1/2 justify-start">Due Date: {details.dueDate}</div>
