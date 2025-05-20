@@ -319,6 +319,12 @@ _(Potential Pages + Logical Work Units)_
 - I also want to figure out how to customize the dates in Week View mode to just `"dd/MM"`, and remove the short day of the week (e.g. "Mon", "Tue", etc). 
 - Finish adding the current semester feedback list and it's items.
 
+### 20th May, Tue: Intermission/Break
+
+- I'm currently on a break so that I can prioritise my part-time studies and any work-related commitments.
+- I currently have two months of studies left to complete, so it's the final stretch.
+- I'll continue to work on this project quietly and I will share my updates on my [DEV Community Profile](https://dev.to/d2d_weizhi) whenever I have something meaningful to share.
+
 ### 16th May, Fri: Group Discussions & Lecturer Feedbacks
 
 - Right Panel Setup: Successfully implemented the right panel layout that houses both the Group Discussion and Lecturer Feedbacks sections. We decided on a fixed h-[80%] height for the panel after testing different options and considering zoom levels.
