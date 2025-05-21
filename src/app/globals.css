@@ -29,14 +29,14 @@ h2 {
   letter-spacing: 1px;
 }
 
-.menu-button { 
+.menu-button {
   /* ... other styles ... */
   transition-delay: 0.5s;
   transition: opacity 0.75s ease-in; /* Adjust duration and easing as needed */
 }
 
 .fade-out {
-  opacity: 0; 
+  opacity: 0;
 }
 
 .fade-in {
@@ -63,7 +63,7 @@ h2 {
 }
 
 .section-header-wrapper {
-  border-bottom: 1px solid rgba(21, 21, 21, .5); /* Thin light gray line */
+  border-bottom: 1px solid rgba(21, 21, 21, 0.5); /* Thin light gray line */
   margin-bottom: 1rem; /* Add some bottom margin */
   vertical-align: middle;
 }
@@ -112,7 +112,26 @@ h2 {
 }
 
 .assignment-desc ul {
-  @apply list-disc list-inside pl-4;
+  @apply list-disc pl-8;
+}
+
+.k-editor-content {
+  font-size: 1rem;
+  font-family: "Roboto";
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.k-editor .k-editor-content ul {
+  @apply list-disc pl-8;
+}
+
+.k-editor .k-editor-content li {
+  @apply mt-2 mb-2;
+}
+
+.k-editor .k-editor-content p {
+  @apply mb-2;
 }
 
 @media (max-width: 2240px) {

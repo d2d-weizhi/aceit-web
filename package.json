@@ -11,6 +11,7 @@
   "dependencies": {
     "@progress/kendo-react-charts": "^10.2.0",
     "@progress/kendo-react-dropdowns": "^10.2.0",
+    "@progress/kendo-react-editor": "^10.2.0",
     "@progress/kendo-react-gantt": "^10.2.0",
     "@progress/kendo-react-gauges": "^10.2.0",
     "@progress/kendo-react-grid": "^10.2.0",
