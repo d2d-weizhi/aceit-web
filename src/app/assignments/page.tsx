@@ -62,7 +62,7 @@ interface IAssignmentDetails {
 	id: string;
 	assignmentTitle: string;
 	module: string;
-	dueDate: Date;
+	dueDate: Date | null;
 	description: string;
 	progressPercent: number;
 	isGroup: boolean;
