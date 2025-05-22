@@ -61,7 +61,7 @@ interface IAssignmentDetails {
 	id: string;
 	assignmentTitle: string;
 	module: string;
-	dueDate: string;
+	dueDate: Date;
 	description: string;
 	progressPercent: number;
 	isGroup: boolean;
@@ -518,7 +518,7 @@ export default function Assignments() {
 										className="flex w-1/2 justify-start"
 										onClick={() => setIsEditDueDate(true)}
 									>
-										Due Date: {details.dueDate}
+										Due Date: {details.dueDate.toLocaleDateString("en-SG")}
 									</div>
 									<div className="flex w-1/2 justify-end">
 										Module: {details.module}
