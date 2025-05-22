@@ -473,8 +473,9 @@ export default function Assignments() {
 									resizable={false}
 									onClose={() => setIsEditDueDate(false)}
 									title={"Select AssignmentDue Date"}
-									initialWidth={400}
-									className="flex flex-col p-4 mx-auto h-max"
+									initialWidth={500}
+									initialHeight={500}
+									className="flex flex-col p-4 mx-auto"
 									style={{
 										minWidth: "320px",
 										marginLeft: "auto",
