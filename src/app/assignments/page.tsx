@@ -482,7 +482,7 @@ export default function Assignments() {
 										marginRight: "auto",
 									}}
 								>
-									<div className="flex-1 w-full items-center justify-center">
+									<div className="flex w-full h-full items-center justify-center">
 										<Calendar 
 											value={details.dueDate!}
 											onChange={(e: CalendarChangeEvent) => setDetails(prevDetails => ({...prevDetails, dueDate: e.target.value}))}
