@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@progress/kendo-react-charts": "^10.2.0",
+    "@progress/kendo-react-dateinputs": "^10.2.0",
     "@progress/kendo-react-dialogs":  "^10.2.0",
     "@progress/kendo-react-dropdowns": "^10.2.0",
     "@progress/kendo-react-editor": "^10.2.0",
