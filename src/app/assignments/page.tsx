@@ -472,19 +472,15 @@ export default function Assignments() {
 									id="winDueDate"
 									resizable={false}
 									onClose={() => setIsEditDueDate(false)}
-									title={"Set Assignment Due Date"}
-									initialHeight={250}
+									title={"Select AssignmentDue Date"}
 									initialWidth={400}
-									className="flex flex-col p-4 mx-auto"
+									className="flex flex-col p-4 mx-auto h-max"
 									style={{
 										minWidth: "320px",
 										marginLeft: "auto",
 										marginRight: "auto",
 									}}
 								>
-									<div className="flex h-max w-full items-center justify-center">
-										Select a new Due Date
-									</div>
 									<div className="flex-1 w-full items-center justify-center">
 										<Calendar 
 											value={details.dueDate!}
