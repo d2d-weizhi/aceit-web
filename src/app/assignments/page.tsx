@@ -487,7 +487,7 @@ export default function Assignments() {
 									</div>
 									<div className="flex-1 w-full items-center justify-center">
 										<Calendar 
-											value={details.dueDate}
+											value={details.dueDate!}
 											onChange={(e: CalendarChangeEvent) => setDetails(prevDetails => ({...prevDetails, dueDate: e.target.value}))}
 										/>
 									</div>
@@ -529,7 +529,7 @@ export default function Assignments() {
 										className="flex w-1/2 justify-start"
 										onClick={() => setIsEditDueDate(true)}
 									>
-										Due Date: {details.dueDate.toLocaleDateString("en-SG")}
+										Due Date: {details.dueDate!.toLocaleDateString("en-SG")}
 									</div>
 									<div className="flex w-1/2 justify-end">
 										Module: {details.module}
