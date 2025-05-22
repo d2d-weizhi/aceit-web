@@ -32,6 +32,7 @@ import {
 	Button,
 } from "@progress/kendo-react-buttons";
 import { TextBox, TextBoxChangeEvent } from "@progress/kendo-react-inputs";
+import { Calendar, CalendarChangeEvent } from "@progress/kendo-react-dateinputs";
 import { Editor, EditorTools, EditorUtils } from "@progress/kendo-react-editor";
 // Dynamically import our KRWindow component.
 const KRWindow = dynamic(() => import("@/shared/components/kr-window"), {
@@ -474,13 +475,23 @@ export default function Assignments() {
 									title={"Set Assignment Due Date"}
 									initialHeight={250}
 									initialWidth={400}
-									className="flex flex-col mx-auto"
+									className="flex flex-col p-4 mx-auto"
 									style={{
 										minWidth: "320px",
 										marginLeft: "auto",
 										marginRight: "auto",
 									}}
-								></KRWindow>
+								>
+									<div className="flex h-max w-full items-center justify-center">
+										Select a new Due Date
+									</div>
+									<div className="flex-1 w-full items-center justify-center">
+										<Calendar 
+											value={details.dueDate}
+											onChange={(e: CalendarChangeEvent) => setDetails(prevDetails => ({...prevDetails, dueDate: e.target.value}))}
+										/>
+									</div>
+								</KRWindow>
 							)}
 
 							<div className="flex-1 flex-row w-full h-max justify-start px-4">
