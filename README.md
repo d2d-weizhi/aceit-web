@@ -312,7 +312,13 @@ Team Members (if applicable)
 
 - When I have the time, I should do some digging to see if we can scroll the view to the current date.
 - I also want to figure out how to customize the dates in Week View mode to just `"dd/MM"`, and remove the short day of the week (e.g. "Mon", "Tue", etc).
-- 
+
+### 24th May, Sat: Assignment Details (Edit Mode)
+
+- Added the `Tags` editing mode.
+- Added the `tags` sample data.
+- Added the `MultiSelect` UI component for selecting the tags.
+
 ### 22nd May, Thu: Assignment Details (Edit Mode)
 
 - Added the `Calendar` UI component for selecting Due Date.

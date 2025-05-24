@@ -181,6 +181,11 @@ export const assignmentDetails = {
       studentName: "Avathi Kumar",
       profileImg: "/female-student-indian.jpg"
     },
+    {
+      id: "881272C",
+      studentName: "Chen Weizhi",
+      profileImg: "/user-profile.jpg"
+    },
   ],
   tags: [
     { id: "1", tagTitle: "UX" },
@@ -211,4 +216,21 @@ export const assignmentFeedbacks = [
     lecturer: "Mandy Mok",
     dateGiven: new Date("2024-05-01").toLocaleDateString("en-SG"),
   }
+];
+
+export const tags = [
+  { id: "1", tagTitle: "UX" },
+  { id: "2", tagTitle: "Figma" },
+  { id: "3", tagTitle: "Coding" },
+  { id: "4", tagTitle: "Web" },
+  { id: "5", tagTitle: "JS" },
+  { id: "6", tagTitle: "AI" },
+  { id: "7", tagTitle: "Ethics" },
+  { id: "8", tagTitle: "Research" },
+  { id: "9", tagTitle: "Project Management" },
+  { id: "10", tagTitle: "HTML" },
+  { id: "11", tagTitle: "UI" },
+  { id: "12", tagTitle: "Trends" },
+  { id: "13", tagTitle: "Design Thinking" },
+  { id: "14", tagTitle: "Reading" }
 ];
