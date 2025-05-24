@@ -213,22 +213,23 @@ export default function Dashboard() {
     return (
       <ListViewItemWrapper className="p-[5px] h-[60px]" style={{ borderBottom: '1px solid lightgrey' }}>
         <div className="flex flex-row w-full h-full">
-          <div className="flex w-[85%] justify-start items-center px-4 text-lg h-full">
+          <div className="flex w-max justify-center items-center px-4 text-lg h-full">
             <button 
               type="button" 
-              className={`mr-4 w-8 aspect-square p-1 items-center justify-center rounded-sm border-1 ${item.isDone ? "bg-green-700 border-green-500" : " border-gray-300" }`}>
+              className={`w-8 aspect-square p-1 items-center justify-center rounded-sm border-1 ${item.isDone ? "bg-green-700 border-green-500" : " border-gray-300" }`}>
               {item.isDone && <Check color="white" width={20} height={20} />}
             </button>
+          </div>
+          <div className="flex-1 flex-col justify-start items-center h-full py-4">
             {item.isDone ? (
               <span className="line-through text-gray-400">
                 {item.title}
               </span>
-              ) : (
-                <span>{item.title}</span>
-              )}
-              &nbsp;
+            ) : (
+              <span>{item.title}</span>
+            )}
           </div>
-          <div className="flex w-[15%] items-center justify-start px-4 text-lg h-full">
+          <div className="flex w-[18%] items-center justify-end px-2 py-4 text-lg h-full">
             {item.hasAlarm && <span><em>{formattedAlarmDate}</em></span>}&nbsp;{item.hasAlarm && <Bell width={16} height={16} />}
           </div>
         </div>
@@ -296,11 +297,11 @@ export default function Dashboard() {
               className="fixed top-0 left-0 p-4 z-50"
             >
               {isShowMenu ? (
-                <X width={64} height={64} strokeWidth={1.5} color={"#FEFEFE"}
+                <X width={48} height={48} strokeWidth={1.5} color={"#FEFEFE"}
                   className={`menu-button ${ isShowMenu ? 'fade-in' : 'fade-out' }`}
                 />
               ) : (
-                <Menu width={64} height={64} strokeWidth={1.5} color={"#141414"}
+                <Menu width={48} height={48} strokeWidth={1.5} color={"#141414"}
                   className={`menu-button ${ isShowMenu ? 'fade-out' : 'fade-in' }`}
                 />
               )}
@@ -313,9 +314,9 @@ export default function Dashboard() {
         </div>
 
         {/* Our Outer Row Layout */}
-        <div className="flex flex-row-1 justify-center items-start w-full z-10">
+        <div className="flex-1 justify-center items-start px-4 w-full z-10">
           {/* Where our entire AceItTab Component begins */}
-          <div className="flex flex-col w-full h-full mx-[5%]">
+          <div className="flex flex-col w-full h-full">
             {/* AceItTabStrip - Start Simple */}
             <AceItTabBar activeTab={activeTab} onChange={setActiveTab} />
 
@@ -324,7 +325,7 @@ export default function Dashboard() {
             {/* AceItTabContent - Initial Content */}
             <div className="aceit-tab-content">
               {activeTab === "Home" ? (
-                <div className="items-center justify-center w-full h-full p-8">
+                <div className="items-center justify-center w-full h-full">
                   <div className="flex justify-start items-center w-full section-header-wrapper">
                     <h2 className="section-header">On-going Assignments:</h2>
                   </div>
@@ -398,7 +399,7 @@ export default function Dashboard() {
 
                 </div>
               ) : (
-                <div className="items-center justify-center w-full h-full p-8"> {/* Main container for our Stats View */}
+                <div className="items-center justify-center w-full h-full"> {/* Main container for our Stats View */}
                   <div className="flex justify-start items-center w-full">
                     <h2 className="section-header">Your Academic Summary:</h2>
                   </div>

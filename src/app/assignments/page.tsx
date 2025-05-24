@@ -300,8 +300,8 @@ export default function Assignments() {
             >
               {isShowMenu ? (
                 <X
-                  width={64}
-                  height={64}
+                  width={48}
+                  height={48}
                   strokeWidth={1.5}
                   color={"#FEFEFE"}
                   className={`menu-button ${
@@ -310,8 +310,8 @@ export default function Assignments() {
                 />
               ) : (
                 <Menu
-                  width={64}
-                  height={64}
+                  width={48}
+                  height={48}
                   strokeWidth={1.5}
                   color={"#141414"}
                   className={`menu-button ${
@@ -335,7 +335,7 @@ export default function Assignments() {
         {/* Top Bar ends here. */}
 
         {/* Left Panel content starts here. */}
-        <div className="flex flex-col  items-center p-8 z-10 w-full h-full">
+        <div className="flex flex-col items-center p-8 z-10 w-full h-full">
           {!isShowDetails ? (
             <div className="flex flex-col items-center w-full h-max">
               <div

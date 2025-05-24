@@ -318,6 +318,10 @@ Team Members (if applicable)
 - Added the `Tags` editing mode.
 - Added the `tags` sample data.
 - Added the `MultiSelect` UI component for selecting the tags.
+- While reviewing the Dashboard/Home layout, noticed the margins/paddings were off. Corrected them.
+- Fixed the z-index issue with left/right panels.
+- Added the `ButtonGroup` UI component.
+- Selected button will have the `primary` theme for now.
 
 ### 22nd May, Thu: Assignment Details (Edit Mode)
 
