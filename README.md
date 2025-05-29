@@ -267,6 +267,11 @@ Team Members (if applicable)
   <summary>Desktop/Tablet (Landscape mode)</summary>
 
 - Have a two-column/panel layout.
+- Left Panel will display both a Task List (Table) view as well as a KanBan version.
+  - (Top) Stats and Chart:
+    - Total no. of Task Completed, In-Progress, Pending
+    - Tasks Distribution (across Modules/Assignments)
+  - (Bottom) KanBan/Table
 - Left panel will display a full list of assignment tasks and who's assigned to them.
 - The task list will show information like:
   - Task title
@@ -312,6 +317,16 @@ Team Members (if applicable)
 
 - When I have the time, I should do some digging to see if we can scroll the view to the current date.
 - I also want to figure out how to customize the dates in Week View mode to just `"dd/MM"`, and remove the short day of the week (e.g. "Mon", "Tue", etc).
+
+### 29th May, Thu: Tasks Page (Left Panel)
+
+- Began putting together the Stats section.
+- Top section will contain Key Stats for each category of Tasks:
+  - "Pending"
+  - "In-Progress"
+  - "Completed"
+- Middle section will feature a horizontal bar chart show "Tasks Distribution (across Assignments)".
+- **TODO:** Create a mouseover/tooltip effect for the `<CircularProgressBar />` component.
 
 ### 24th May, Sat: Assignment Details (Edit Mode)
 
