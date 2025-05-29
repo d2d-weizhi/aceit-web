@@ -15,7 +15,6 @@ import {
     ChartSeriesItem,
     ChartCategoryAxis,
     ChartCategoryAxisItem,
-    ChartTitle,
     ChartLegend
 } from '@progress/kendo-react-charts';
 import { modules, tasksDistriSeries } from "@/shared/data/tasks-page-data";
